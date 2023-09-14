@@ -13,6 +13,7 @@ class FeedViewModel: ObservableObject {
     let publication: Publication
     
     @Published var feed: RSS?
+    @Published var loading: Bool = false
     
     init(publication: Publication) {
         self.publication = publication
@@ -21,16 +22,18 @@ class FeedViewModel: ObservableObject {
     func getFeed() {
         let decoder = XMLDecoder()
         decoder.shouldProcessNamespaces = true
+        loading = true
         
-        URLSession.shared.dataTask(with: publication.url) { data, response, error in
+        URLSession.shared.dataTask(with: publication.url) { [weak self] data, response, error in
+            self?.loading = false
+            
             if let data = data  {
                 do {
                     
                     let feed = try decoder.decode(RSS.self, from: data.dataMiddleware())
                     
-                    DispatchQueue.main.async {
-                        self.feed = feed
-                        
+                    DispatchQueue.main.async { [weak self] in
+                        self?.feed = feed
                     }
                     
                 } catch {

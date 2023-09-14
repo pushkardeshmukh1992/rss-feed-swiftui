@@ -12,28 +12,33 @@ struct FeedListView: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .leading) {
-                Text(feedViewModel.feed?.channel.title ?? "Heading")
-                    .font(.headline)
-                    .fontWeight(.bold)
-                
-                Text(feedViewModel.feed?.channel.description ?? "Subheading")
-                    .font(.subheadline)
-            }
-            .padding(.horizontal, 16)
-            
-            List {
-                ForEach(feedViewModel.feed?.channel.items ?? []) { item in
-                    NavigationLink {
-                        FeedDetailsView(item: item)
-                    } label: {
-                        FeedListRowView(item: item)
+            if feedViewModel.loading {
+                ProgressView()
+            } else {
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text(feedViewModel.feed?.channel.title ?? "Heading")
+                            .font(.headline)
+                            .fontWeight(.bold)
+                        
+                        Text(feedViewModel.feed?.channel.description ?? "Subheading")
+                            .font(.subheadline)
                     }
-
+                    .padding(.horizontal, 16)
                     
+                    List {
+                        ForEach(feedViewModel.feed?.channel.items ?? []) { item in
+                            NavigationLink {
+                                FeedDetailsView(item: item)
+                            } label: {
+                                FeedListRowView(item: item)
+                            }
+
+                            
+                        }
+                    }
                 }
             }
-            
         }.onAppear() {
             feedViewModel.getFeed()
         }
