@@ -32,6 +32,10 @@ struct ChannelImage: Codable {
     let url: String
     let title: String
     let link: String
+    
+    var imageURL: URL {
+        return URL(string: url)!
+    }
 }
 
 struct FeedItem: Codable, Identifiable {

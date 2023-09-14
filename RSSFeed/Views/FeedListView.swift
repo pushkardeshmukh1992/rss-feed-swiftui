@@ -17,6 +17,16 @@ struct FeedListView: View {
             } else {
                 VStack {
                     VStack(alignment: .leading) {
+                        AsyncImage(url: feedViewModel.feed?.channel.image.imageURL) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        } placeholder: {
+                            
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        
                         Text(feedViewModel.feed?.channel.title ?? "Heading")
                             .font(.headline)
                             .fontWeight(.bold)
