@@ -39,7 +39,7 @@ struct FeedListView: View {
                     }
                 }
             }
-        }.onAppear() {
+        }.task {
             feedViewModel.getFeed()
         }
     }
