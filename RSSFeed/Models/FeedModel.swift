@@ -16,14 +16,38 @@ struct RSS: Codable {
 }
 
 struct Channel: Codable {
-    let title: ChannelTitle
-}
-
-struct ChannelTitle: Codable {
-    let data: String
+    let title: String
+    let description: String
+    let link: String
+    let image: ChannelImage
+    let items: [FeedItem]
     
-    enum EncodingKeys: String, CodingKey {
-        case data = "__cdata"
+    enum CodingKeys: String, CodingKey {
+        case title, description, link, image
+        case items = "item"
     }
 }
+
+struct ChannelImage: Codable {
+    let url: String
+    let title: String
+    let link: String
+}
+
+struct FeedItem: Codable {
+    let title: String
+    let link: String
+    let category: [String]
+    let pubDate: String
+    let creator: String
+    let content: String
+    
+    enum CodingKeys: String, CodingKey {
+        case title, link, category, pubDate, creator
+        case content = "description"
+    }
+}
+
+
+
 

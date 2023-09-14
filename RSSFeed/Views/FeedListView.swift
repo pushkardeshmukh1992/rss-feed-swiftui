@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct FeedListView: View {
+    @StateObject var feedViewModel = FeedViewModel()
+    
     var body: some View {
         VStack {
             List {
                 FeedListRowView()
             }
             
+        }.onAppear() {
+            feedViewModel.getFeed()
         }
     }
 }
