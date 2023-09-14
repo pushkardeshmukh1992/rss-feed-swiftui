@@ -11,9 +11,11 @@ class PublicationsViewModel: ObservableObject {
     @Published var publications = [Publication]()
     
     init() {
-        publications.append(
-            DataUtil.publication1
-        )
+        publications = [
+            DataUtil.publication1,
+            DataUtil.publication2,
+            DataUtil.publication3
+        ]
     }
     
     func getPublications() -> [Publication] {
