@@ -24,7 +24,13 @@ struct FeedListView: View {
             
             List {
                 ForEach(feedViewModel.feed?.channel.items ?? []) { item in
-                    FeedListRowView(item: item)
+                    NavigationLink {
+                        FeedDetailsView(item: item)
+                    } label: {
+                        FeedListRowView(item: item)
+                    }
+
+                    
                 }
             }
             
