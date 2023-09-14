@@ -12,6 +12,8 @@
 		8437BD822AB32059009E13AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8437BD812AB32059009E13AC /* Assets.xcassets */; };
 		8437BD852AB32059009E13AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8437BD842AB32059009E13AC /* Preview Assets.xcassets */; };
 		8437BD8F2AB32059009E13AC /* RSSFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437BD8E2AB32059009E13AC /* RSSFeedTests.swift */; };
+		8437BDAD2AB321C0009E13AC /* FeedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437BDAC2AB321C0009E13AC /* FeedListView.swift */; };
+		8437BDB12AB32261009E13AC /* FeedListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437BDB02AB32261009E13AC /* FeedListRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		8437BD842AB32059009E13AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8437BD8A2AB32059009E13AC /* RSSFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8437BD8E2AB32059009E13AC /* RSSFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSSFeedTests.swift; sourceTree = "<group>"; };
+		8437BDAC2AB321C0009E13AC /* FeedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListView.swift; sourceTree = "<group>"; };
+		8437BDB02AB32261009E13AC /* FeedListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedListRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +77,11 @@
 		8437BD7C2AB32058009E13AC /* RSSFeed */ = {
 			isa = PBXGroup;
 			children = (
+				8437BDAB2AB3214C009E13AC /* Services */,
+				8437BDAA2AB3213F009E13AC /* ViewModels */,
+				8437BDA92AB3213A009E13AC /* Models */,
+				8437BDA82AB32134009E13AC /* Views */,
 				8437BD7D2AB32058009E13AC /* RSSFeedApp.swift */,
-				8437BD7F2AB32058009E13AC /* ContentView.swift */,
 				8437BD812AB32059009E13AC /* Assets.xcassets */,
 				8437BD832AB32059009E13AC /* Preview Content */,
 			);
@@ -95,6 +102,37 @@
 				8437BD8E2AB32059009E13AC /* RSSFeedTests.swift */,
 			);
 			path = RSSFeedTests;
+			sourceTree = "<group>";
+		};
+		8437BDA82AB32134009E13AC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8437BDAC2AB321C0009E13AC /* FeedListView.swift */,
+				8437BD7F2AB32058009E13AC /* ContentView.swift */,
+				8437BDB02AB32261009E13AC /* FeedListRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8437BDA92AB3213A009E13AC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8437BDAA2AB3213F009E13AC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		8437BDAB2AB3214C009E13AC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +235,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8437BDAD2AB321C0009E13AC /* FeedListView.swift in Sources */,
 				8437BD802AB32058009E13AC /* ContentView.swift in Sources */,
 				8437BD7E2AB32058009E13AC /* RSSFeedApp.swift in Sources */,
+				8437BDB12AB32261009E13AC /* FeedListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
