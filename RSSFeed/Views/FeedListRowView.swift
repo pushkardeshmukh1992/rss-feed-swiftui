@@ -8,13 +8,15 @@
 import SwiftUI
 
 struct FeedListRowView: View {
+    var item: FeedItem
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(item.title)
     }
 }
 
 struct FeedListRowView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedListRowView()
+        FeedListRowView(item: DataUtil.feedItem)
     }
 }

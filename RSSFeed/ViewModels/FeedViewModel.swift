@@ -10,23 +10,38 @@ import XMLCoder
 import Combine
 
 class FeedViewModel: ObservableObject {
+    let publication: Publication
+    
+    @Published var feed: RSS?
+    
+    init(publication: Publication) {
+        self.publication = publication
+    }
+    
     func getFeed() {
-        guard let url = URL(string: "https://medium.com/feed/backchannel") else { return }
-        
         let decoder = XMLDecoder()
         decoder.shouldProcessNamespaces = true
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        URLSession.shared.dataTask(with: publication.url) { data, response, error in
             if let data = data  {
                 do {
+                    
                     let feed = try decoder.decode(RSS.self, from: data.dataMiddleware())
-                    print(feed)
+                    
+                    DispatchQueue.main.async {
+                        self.feed = feed
+                        
+                    }
+                    
                 } catch {
                     print(error)
                 }
-
             }
         }.resume()
+    }
+    
+    func getActiveChannelList() -> Void {
+        
     }
 }
 

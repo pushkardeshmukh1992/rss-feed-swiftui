@@ -19,6 +19,11 @@
 		8437BDB52AB32502009E13AC /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8437BDB42AB32502009E13AC /* FeedViewModel.swift */; };
 		8437BDB72AB32791009E13AC /* Example.xml in Resources */ = {isa = PBXBuildFile; fileRef = 8437BDB62AB32791009E13AC /* Example.xml */; };
 		8484F4612AB3619300F7BF91 /* Extension+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F4602AB3619300F7BF91 /* Extension+Data.swift */; };
+		8484F4652AB365C000F7BF91 /* PublicationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F4642AB365C000F7BF91 /* PublicationsModel.swift */; };
+		8484F4672AB3663C00F7BF91 /* PublicationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F4662AB3663C00F7BF91 /* PublicationsViewModel.swift */; };
+		8484F4692AB3665B00F7BF91 /* PublicationsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F4682AB3665B00F7BF91 /* PublicationsListView.swift */; };
+		8484F46B2AB3696100F7BF91 /* PublicationListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F46A2AB3696100F7BF91 /* PublicationListRowView.swift */; };
+		8484F46E2AB3712E00F7BF91 /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F46D2AB3712E00F7BF91 /* DataUtil.swift */; };
 		9676839377694AF741CBE0C2 /* Pods_RSSFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD3F6ED58A18C2AAA66F8C /* Pods_RSSFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +54,11 @@
 		8437BDB42AB32502009E13AC /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		8437BDB62AB32791009E13AC /* Example.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Example.xml; sourceTree = "<group>"; };
 		8484F4602AB3619300F7BF91 /* Extension+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Data.swift"; sourceTree = "<group>"; };
+		8484F4642AB365C000F7BF91 /* PublicationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationsModel.swift; sourceTree = "<group>"; };
+		8484F4662AB3663C00F7BF91 /* PublicationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationsViewModel.swift; sourceTree = "<group>"; };
+		8484F4682AB3665B00F7BF91 /* PublicationsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationsListView.swift; sourceTree = "<group>"; };
+		8484F46A2AB3696100F7BF91 /* PublicationListRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationListRowView.swift; sourceTree = "<group>"; };
+		8484F46D2AB3712E00F7BF91 /* DataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtil.swift; sourceTree = "<group>"; };
 		CDCA70D9B3D88A327DA64D7D /* Pods-RSSFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedTests.release.xcconfig"; path = "Target Support Files/Pods-RSSFeedTests/Pods-RSSFeedTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1845818F0CBB8FADA5F0776 /* Pods-RSSFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeed.release.xcconfig"; path = "Target Support Files/Pods-RSSFeed/Pods-RSSFeed.release.xcconfig"; sourceTree = "<group>"; };
 		EFDD3F6ED58A18C2AAA66F8C /* Pods_RSSFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSSFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -117,6 +127,7 @@
 		8437BD7C2AB32058009E13AC /* RSSFeed */ = {
 			isa = PBXGroup;
 			children = (
+				8484F46C2AB3712100F7BF91 /* Utils */,
 				8484F45F2AB3618000F7BF91 /* Extensions */,
 				8437BDAB2AB3214C009E13AC /* Services */,
 				8437BDAA2AB3213F009E13AC /* ViewModels */,
@@ -149,9 +160,11 @@
 		8437BDA82AB32134009E13AC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8484F4682AB3665B00F7BF91 /* PublicationsListView.swift */,
 				8437BDAC2AB321C0009E13AC /* FeedListView.swift */,
 				8437BD7F2AB32058009E13AC /* ContentView.swift */,
 				8437BDB02AB32261009E13AC /* FeedListRowView.swift */,
+				8484F46A2AB3696100F7BF91 /* PublicationListRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				8437BDB22AB323CC009E13AC /* FeedModel.swift */,
+				8484F4642AB365C000F7BF91 /* PublicationsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -168,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				8437BDB42AB32502009E13AC /* FeedViewModel.swift */,
+				8484F4662AB3663C00F7BF91 /* PublicationsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,6 +200,14 @@
 				8484F4602AB3619300F7BF91 /* Extension+Data.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8484F46C2AB3712100F7BF91 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8484F46D2AB3712E00F7BF91 /* DataUtil.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,11 +379,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8437BDAD2AB321C0009E13AC /* FeedListView.swift in Sources */,
+				8484F46E2AB3712E00F7BF91 /* DataUtil.swift in Sources */,
+				8484F46B2AB3696100F7BF91 /* PublicationListRowView.swift in Sources */,
+				8484F4692AB3665B00F7BF91 /* PublicationsListView.swift in Sources */,
 				8437BD802AB32058009E13AC /* ContentView.swift in Sources */,
+				8484F4672AB3663C00F7BF91 /* PublicationsViewModel.swift in Sources */,
 				8437BDB52AB32502009E13AC /* FeedViewModel.swift in Sources */,
 				8484F4612AB3619300F7BF91 /* Extension+Data.swift in Sources */,
 				8437BDB32AB323CC009E13AC /* FeedModel.swift in Sources */,
 				8437BD7E2AB32058009E13AC /* RSSFeedApp.swift in Sources */,
+				8484F4652AB365C000F7BF91 /* PublicationsModel.swift in Sources */,
 				8437BDB12AB32261009E13AC /* FeedListRowView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,7 +34,8 @@ struct ChannelImage: Codable {
     let link: String
 }
 
-struct FeedItem: Codable {
+struct FeedItem: Codable, Identifiable {
+    var id: String { title }
     let title: String
     let link: String
     let category: [String]
