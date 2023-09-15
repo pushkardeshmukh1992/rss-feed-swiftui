@@ -23,7 +23,7 @@ enum DataUtil {
                                           url: URL(string: "https://medium.com/feed/matter")!,
                                           title: "Matter Publications")
     
-    static let feedItem = FeedItem(title: "Feed item title", linkString: "https://www.google.com", category: ["category1", "category2", "category1", "category2", "category1", "category2", "category1", "category2"], pubDate: "Wed, 03 Jan 2018 20:00:05 GMT", creator: "", content: """
+    static let feedItem = FeedItem(title: "Feed item title", linkString: "https://www.google.com", category: ["category1", "category2", "category1", "category2", "category1", "category2", "category1", "category2"], pubDate: Date(), creator: "", content: """
         <figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*kvUxCePPMcrCCdoSXTJYsg.jpeg" /></figure><h4>We’re now officially and totally integrated into Wired. But we won’t be gone."
         """)
 }

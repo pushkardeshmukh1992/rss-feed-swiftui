@@ -43,7 +43,7 @@ struct FeedItem: Codable, Identifiable {
     let title: String
     let linkString: String
     let category: [String]
-    let pubDate: String
+    let pubDate: Date
     let creator: String
     let content: String
     

@@ -41,7 +41,13 @@ struct FeedListHeaderView: View {
                 
             }
             
-            Text(item.pubDate)
+            HStack {
+                Text(item.creator)
+                Text("• \(DateUtil.formatDate(date: item.pubDate))")
+                    .font(.footnote)
+                    .foregroundColor(Color(uiColor: UIColor.lightGray))
+            }
+
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         

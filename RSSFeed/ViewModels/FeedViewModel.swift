@@ -22,8 +22,14 @@ class FeedViewModel: ObservableObject {
     func getFeed() {
         guard feed == nil else { return }
         
+        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MMM d, h:mm a"
+        dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss Z"
+        
         let decoder = XMLDecoder()
         decoder.shouldProcessNamespaces = true
+        decoder.dateDecodingStrategy = .formatted(dateFormatter)
+        
         loading = true
         
         URLSession.shared.dataTask(with: publication.url) { [weak self] data, response, error in
