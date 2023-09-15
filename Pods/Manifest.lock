@@ -1,0 +1,16 @@
+PODS:
+  - XMLCoder (0.14.0)
+
+DEPENDENCIES:
+  - XMLCoder (~> 0.14.0)
+
+SPEC REPOS:
+  trunk:
+    - XMLCoder
+
+SPEC CHECKSUMS:
+  XMLCoder: 0199b725702f32aa3190a88ea2f6fb4847bfe1d1
+
+PODFILE CHECKSUM: 54ed47ca619818b7abbadd19ac9702ced03d91ac
+
+COCOAPODS: 1.12.1
