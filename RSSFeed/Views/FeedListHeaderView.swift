@@ -13,7 +13,7 @@ struct FeedListHeaderView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(item.title)
-                .font(.title)
+                .font(.title2)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
                 

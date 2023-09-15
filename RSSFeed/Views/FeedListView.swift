@@ -27,10 +27,11 @@ struct FeedListView: View {
                         .background(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
-                        
+
                         Text(feedViewModel.feed?.channel.title ?? "Heading")
-                            .font(.headline)
+                            .font(.title)
                             .fontWeight(.bold)
+                            .multilineTextAlignment(.leading)
                         
                         Text(feedViewModel.feed?.channel.description ?? "Subheading")
                             .font(.subheadline)
