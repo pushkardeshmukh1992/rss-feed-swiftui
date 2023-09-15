@@ -16,6 +16,7 @@ struct FeedListHeaderView: View {
                 .font(.title)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)
+                
             
             ScrollView(.horizontal) {
                 HStack {
@@ -23,13 +24,13 @@ struct FeedListHeaderView: View {
                         
                         ZStack {
                             RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .fill(.gray)
+                                .fill(Color(ColorUtil.PrimaryLightBlackDarkWhite))
                             
                             Text(category.uppercased())
                                 .padding(.horizontal, 8)
                                 .font(.system(.caption))
                                 .fontWeight(.bold)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color(ColorUtil.PrimaryLightWhiteDarkBlack))
                             
                         }
                         .frame(height: 32)
