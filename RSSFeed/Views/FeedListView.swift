@@ -24,6 +24,7 @@ struct FeedListView: View {
                         } placeholder: {
                             ProgressView()
                         }
+                        .background(.white)
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
                         
