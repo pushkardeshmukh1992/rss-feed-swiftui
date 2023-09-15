@@ -14,8 +14,12 @@ struct FeedDetailsView: View {
     
     var body: some View {
         VStack {
-            FeedListRowView(item: item)
+            FeedListHeaderView(item: item)
+                .padding(.horizontal, 16)
+            
             HTMLStringView(htmlContent: item.content)
+                .padding(.vertical, 8)
+            
         }
     }
 }

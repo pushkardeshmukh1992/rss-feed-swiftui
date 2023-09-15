@@ -13,35 +13,7 @@ struct FeedListRowView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(item.title)
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.leading)
-            
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(item.category, id: \.self) { category in
-                        
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 8, style: .continuous)
-                                .fill(.gray)
-                            
-                            Text(category.uppercased())
-                                .padding(.horizontal, 8)
-                                .font(.system(.caption))
-                                .fontWeight(.bold)
-                                .foregroundColor(.white)
-                            
-                        }
-                        .frame(height: 32)
-                        
-                        
-                    }
-                }
-                
-            }
-            
-            Text(item.pubDate)
+            FeedListHeaderView(item: item)
             
             HStack {
                 Text("VIEW ARTICLE")
@@ -65,7 +37,6 @@ struct FeedListRowView: View {
 
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        
         .padding(.horizontal, 16)
     }
 }
