@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct PublicationsListView: View {
+    @State var showAddView = false
+    
     @StateObject var publicationsViewModel = PublicationsViewModel()
     
     var body: some View {
@@ -15,10 +17,12 @@ struct PublicationsListView: View {
             VStack {
                 List {
                     ForEach(publicationsViewModel.publications) { publication in
-                        NavigationLink {
-                            FeedListView(feedViewModel: FeedViewModel(publication: publication))
-                        } label: {
-                            PublicationListRowView(publication: publication)
+                        if publication.active {
+                            NavigationLink {
+                                FeedListView(feedViewModel: FeedViewModel(publication: publication))
+                            } label: {
+                                PublicationListRowView(publication: publication)
+                            }
                         }
                     }
                 }
@@ -26,7 +30,7 @@ struct PublicationsListView: View {
             }
             .overlay(
                 Button {
-                    
+                    showAddView.toggle()
                 } label: {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
@@ -38,6 +42,9 @@ struct PublicationsListView: View {
                 .frame(width: 48, height: 48)
                 , alignment: .bottomTrailing
             )
+        }
+        .sheet(isPresented: $showAddView) {
+            AddPublicationsView(publicationsViewModel: publicationsViewModel)
         }
     }
 }

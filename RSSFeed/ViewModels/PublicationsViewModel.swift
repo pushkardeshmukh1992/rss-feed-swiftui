@@ -11,15 +11,19 @@ class PublicationsViewModel: ObservableObject {
     @Published var publications = [Publication]()
     
     init() {
-        publications = [
-            DataUtil.publication1,
-            DataUtil.publication2,
-            DataUtil.publication3
-        ]
+        publications = DataUtil.allPublications
     }
     
-    func getPublications() -> [Publication] {
-        publications
+    func toggleActivePublication(publication: Publication) {
+        publications = publications.map { pub in
+            var tempPublication = pub
+            
+            if pub.id == publication.id {
+                tempPublication.active = !tempPublication.active
+            }
+            
+            return tempPublication
+        }
     }
 }
 

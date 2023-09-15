@@ -11,7 +11,9 @@ enum DataUtil {
     static let publication1 = Publication(id: "1",
                                           rss: RSS(channel: Channel(title: "Channel", description: "Descriptions", link: "htts://www.google.com", image: ChannelImage(url: "https://cdn-images-1.medium.com/v2/format:png/1*TGH72Nnw24QL3iV9IOm4VA.png", title: "Channel image title", link: "https://any-channel-image.com"), items: [])),
                                           url: URL(string: "https://medium.com/feed/backchannel")!,
-                                          title: "Backchannel Tech Publication")
+                                          title: "Backchannel Tech Publication",
+                                          active: true
+                                        )
     
     static let publication2 = Publication(id: "2",
                                           rss: RSS(channel: Channel(title: "Channel", description: "Descriptions", link: "htts://www.google.com", image: ChannelImage(url: "https://cdn-images-1.medium.com/v2/format:png/1*TGH72Nnw24QL3iV9IOm4VA.png", title: "Channel image title", link: "https://any-channel-image.com"), items: [])),
@@ -26,4 +28,7 @@ enum DataUtil {
     static let feedItem = FeedItem(title: "Feed item title", linkString: "https://www.google.com", category: ["category1", "category2", "category1", "category2", "category1", "category2", "category1", "category2"], pubDate: Date(), creator: "", content: """
         <figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*kvUxCePPMcrCCdoSXTJYsg.jpeg" /></figure><h4>We’re now officially and totally integrated into Wired. But we won’t be gone."
         """)
+    
+    static let initialPublication = [DataUtil.publication1]
+    static let allPublications = [DataUtil.publication1, DataUtil.publication2, DataUtil.publication3]
 }

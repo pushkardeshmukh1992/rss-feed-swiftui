@@ -13,4 +13,7 @@ struct Publication: Identifiable {
     let url: URL
     let title: String
     
+    var active: Bool = false
+    
+    
 }
