@@ -15,14 +15,14 @@ struct FeedListView: View {
             if feedViewModel.loading {
                 ProgressView()
             } else {
-                VStack {
+                ScrollView {
                     VStack(alignment: .leading) {
                         AsyncImage(url: feedViewModel.feed?.channel.image.imageURL) { image in
                             image
                                 .resizable()
                                 .scaledToFit()
                         } placeholder: {
-                            
+                            ProgressView()
                         }
                         .frame(maxWidth: .infinity)
                         .padding(.vertical, 16)
@@ -36,17 +36,17 @@ struct FeedListView: View {
                     }
                     .padding(.horizontal, 16)
                     
-                    List {
-                        ForEach(feedViewModel.feed?.channel.items ?? []) { item in
-                            NavigationLink {
-                                FeedDetailsView(item: item)
-                            } label: {
-                                FeedListRowView(item: item)
-                            }
-
-                            
+                    ForEach(feedViewModel.feed?.channel.items ?? []) { item in
+                        NavigationLink {
+                            FeedDetailsView(item: item)
+                        } label: {
+                            FeedListRowView(item: item)
                         }
+                        .buttonStyle(.plain)
                     }
+                    .padding(.top, 16)
+                   
+                   
                 }
             }
         }.task {

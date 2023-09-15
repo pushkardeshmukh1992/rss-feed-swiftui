@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WebKit
 
 struct FeedDetailsView: View {
     var item: FeedItem
@@ -18,5 +19,17 @@ struct FeedDetailsView: View {
 struct FeedDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         FeedDetailsView(item: DataUtil.feedItem)
+    }
+}
+
+struct HTMLStringView: UIViewRepresentable {
+    let htmlContent: String
+
+    func makeUIView(context: Context) -> WKWebView {
+        return WKWebView()
+    }
+
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        uiView.loadHTMLString(htmlContent, baseURL: nil)
     }
 }
