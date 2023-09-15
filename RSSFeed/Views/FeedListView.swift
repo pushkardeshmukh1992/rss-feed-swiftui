@@ -37,12 +37,16 @@ struct FeedListView: View {
                     .padding(.horizontal, 16)
                     
                     ForEach(feedViewModel.feed?.channel.items ?? []) { item in
+                        
                         NavigationLink {
                             FeedDetailsView(item: item)
+                                
                         } label: {
                             FeedListRowView(item: item)
                         }
                         .buttonStyle(.plain)
+                        
+                        
                     }
                     .padding(.top, 16)
                    

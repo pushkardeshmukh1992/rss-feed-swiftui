@@ -10,9 +10,13 @@ import WebKit
 
 struct FeedDetailsView: View {
     var item: FeedItem
+    @State var webViewHeight: CGFloat = 0
     
     var body: some View {
-        Text(item.title)
+        VStack {
+            FeedListRowView(item: item)
+            HTMLStringView(htmlContent: item.content)
+        }
     }
 }
 
@@ -24,12 +28,14 @@ struct FeedDetailsView_Previews: PreviewProvider {
 
 struct HTMLStringView: UIViewRepresentable {
     let htmlContent: String
-
+    
     func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+        let webView = WKWebView()
+        return webView
     }
-
+    
     func updateUIView(_ uiView: WKWebView, context: Context) {
         uiView.loadHTMLString(htmlContent, baseURL: nil)
     }
 }
+
