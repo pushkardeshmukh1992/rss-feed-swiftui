@@ -9,24 +9,33 @@ import SwiftUI
 import WebKit
 
 struct FeedDetailsView: View {
-    var item: FeedItem
-    @State var webViewHeight: CGFloat = 0
+    @StateObject var feedDetailsViewModel: FeedDetailsViewModel
     
     var body: some View {
         VStack {
-            FeedListHeaderView(item: item)
+            FeedListHeaderView(item: feedDetailsViewModel.item)
                 .padding(.horizontal, 16)
             
-            HTMLStringView(htmlContent: item.content)
+            HTMLStringView(htmlContent: feedDetailsViewModel.item.content)
                 .padding(.vertical, 8)
             
+        }
+        .navigationBarItems(trailing: VStack {
+            Button {
+                feedDetailsViewModel.saveBookmark()
+            } label: {
+                Image(systemName: feedDetailsViewModel.isBookmarked ? "bookmark.fill" : "bookmark")
+            }
+        })
+        .onAppear() {
+            feedDetailsViewModel.checkAndUpdateBookmark()
         }
     }
 }
 
 struct FeedDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedDetailsView(item: DataUtil.feedItem)
+        FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: DataUtil.feedItem))
     }
 }
 

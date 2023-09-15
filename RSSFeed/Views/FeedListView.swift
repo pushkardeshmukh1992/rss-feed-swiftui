@@ -39,18 +39,14 @@ struct FeedListView: View {
                     ForEach(feedViewModel.feed?.channel.items ?? []) { item in
                         
                         NavigationLink {
-                            FeedDetailsView(item: item)
+                            FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: item))
                                 
                         } label: {
                             FeedListRowView(item: item)
                         }
                         .buttonStyle(.plain)
-                        
-                        
                     }
                     .padding(.top, 16)
-                   
-                   
                 }
             }
         }.task {
