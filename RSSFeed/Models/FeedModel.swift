@@ -41,14 +41,19 @@ struct ChannelImage: Codable {
 struct FeedItem: Codable, Identifiable {
     var id: String { title }
     let title: String
-    let link: String
+    let linkString: String
     let category: [String]
     let pubDate: String
     let creator: String
     let content: String
     
+    var url: URL? {
+        return URL(string: linkString)
+    }
+    
     enum CodingKeys: String, CodingKey {
-        case title, link, category, pubDate, creator
+        case title, category, pubDate, creator
+        case linkString = "link"
         case content = "description"
     }
 }

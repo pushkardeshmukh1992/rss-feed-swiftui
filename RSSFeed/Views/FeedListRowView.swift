@@ -9,6 +9,8 @@ import SwiftUI
 
 
 struct FeedListRowView: View {
+    @Environment(\.openURL) var openURL
+    
     var item: FeedItem
     
     var body: some View {
@@ -21,12 +23,14 @@ struct FeedListRowView: View {
                 
                 Spacer()
                 
-                Button {
-                    print("TODO open link")
-                    
-                } label: {
-                    Image(systemName: "link")
-                        .accentColor(.gray)
+                if let url = item.url {
+                    Button {
+                        openURL(url)
+                        
+                    } label: {
+                        Image(systemName: "link")
+                            .accentColor(.gray)
+                    }
                 }
             }
             .padding(.vertical, 4)
