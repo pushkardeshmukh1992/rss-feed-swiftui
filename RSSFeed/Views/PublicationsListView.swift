@@ -12,7 +12,6 @@ struct PublicationsListView: View {
     
     var body: some View {
         NavigationView {
-            
             VStack {
                 List {
                     ForEach(publicationsViewModel.publications) { publication in
@@ -25,7 +24,20 @@ struct PublicationsListView: View {
                 }
                 .navigationBarTitle("Publications", displayMode: .inline)
             }
-            
+            .overlay(
+                Button {
+                    
+                } label: {
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 48, height: 48)
+                }
+                .accentColor(Color(ColorUtil.PrimaryLightBlackDarkWhite))
+                .padding(.trailing, 32)
+                .frame(width: 48, height: 48)
+                , alignment: .bottomTrailing
+            )
         }
     }
 }
