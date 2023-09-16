@@ -14,6 +14,4 @@ struct Publication: Identifiable {
     let title: String
     
     var active: Bool = false
-    
-    
 }
