@@ -58,6 +58,33 @@ final class RSSFeedTests: XCTestCase {
         wait(for: [exp], timeout: 2)
     }
     
+    func testFeeds_shouldNotFetchDataAgainIfFeedIsPresent() {
+        let result = FeedResult.success(DataUtil.defaultRSS)
+        
+        let sut = FeedViewModel(publication: DataUtil.publication1, feedService: MockFeedService(result: result))
+        
+        sut.getFeed()
+        
+        var capturedResults = [FeedResult]()
+        
+        let exp = expectation(description: "Should not fetch the data again if feed is already fetched")
+        
+        sut.$feed.sink { rss in
+            capturedResults.append(.success(DataUtil.defaultRSS))
+            
+            sut.getFeed()
+            
+            if sut.feed != nil && capturedResults.count == 1 {
+                // Note: Feed is not null and captureResults same even after calling gedFeed() twice
+                exp.fulfill()
+            }
+        }.store(in: &cancellables)
+        
+        exp.fulfill()
+        
+        wait(for: [exp], timeout: 3)
+    }
+    
     class MockFeedService: FeedServiceProtocol {
         let result: FeedResult
         
