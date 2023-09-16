@@ -123,6 +123,40 @@ final class RSSFeedTests: XCTestCase {
         wait(for: [exp], timeout: 4)
     }
     
+    func test_deliversFailureResponseOnInValidURL() {
+        let sut = FeedService()
+        
+        let url = URL(string: "https://any-url.com")!
+        
+        let exp = expectation(description: "Should throw error on invalid error while fetching feed \(url.absoluteString)")
+        
+        sut.getFeed(url: url) { result in
+            switch result {
+            case .success(_): break
+            case .failure(_): exp.fulfill()
+            }
+        }
+        
+        wait(for: [exp], timeout: 4)
+    }
+    
+    func test_deliversFailureResponseOnValidURLButJSONResponse() {
+        let sut = FeedService()
+        
+        let url = URL(string: "https://fakestoreapi.com/products")!
+        
+        let exp = expectation(description: "Should throw parse error while fetching json url instead of xml \(url.absoluteString)")
+        
+        sut.getFeed(url: url) { result in
+            switch result {
+            case .success(_): XCTFail("Response was not expected for this json")
+            case .failure(_): exp.fulfill()
+            }
+        }
+        
+        wait(for: [exp], timeout: 4)
+    }
+    
     class MockFeedService: FeedServiceProtocol {
         let result: FeedResult
         
