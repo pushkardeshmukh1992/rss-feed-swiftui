@@ -11,7 +11,13 @@ struct RSSResponse: Codable {
     let rss: RSS
 }
 
-struct RSS: Codable {
+struct RSS: Codable, Equatable {
+    static func == (lhs: RSS, rhs: RSS) -> Bool {
+        return lhs.channel.title == rhs.channel.title
+    }
+    
+    
+    
     let channel: Channel
 }
 

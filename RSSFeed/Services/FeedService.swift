@@ -17,12 +17,19 @@ enum APIError: Error {
 typealias FeedResult = Result<RSS, APIError>
 
 protocol FeedServiceProtocol {
-    func getFeed(url: URL, completion: @escaping( _ result: FeedResult) -> Void)
+    func getFeed(url: URL, session: URLSession, completion: @escaping( _ result: FeedResult) -> Void)
+}
+
+extension FeedServiceProtocol {
+    func getFeed(url: URL, session: URLSession = URLSession.shared, completion: @escaping( _ result: FeedResult) -> Void) {
+        getFeed(url: url, session: session, completion: completion)
+    }
 }
 
 class FeedService: FeedServiceProtocol {
-    func getFeed(url: URL, completion: @escaping( _ result: FeedResult) -> Void) {
-        URLSession.shared.dataTask(with: url) { data, response, error in
+    func getFeed(url: URL, session: URLSession = URLSession.shared, completion: @escaping( _ result: FeedResult) -> Void) {
+        
+        session.dataTask(with: url) { data, response, error in
             guard error == nil else {
                 completion(.failure(.httpError))
                 return

@@ -29,7 +29,11 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:RSSFeedTests/RSSFeedTestPlan.xctestplan">
+            reference = "container:RSSFeedTests/RSSFeedTestPlan.xctestplan"
+            default = "YES">
+         </TestPlanReference>
+         <TestPlanReference
+            reference = "container:RSSFeed/TestPlan.xctestplan">
          </TestPlanReference>
       </TestPlans>
       <Testables>
