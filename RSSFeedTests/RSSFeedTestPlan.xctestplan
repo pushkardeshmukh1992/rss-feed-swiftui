@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "3CC56B95-9EA2-439F-B815-85AA6EA00D70",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:RSSFeed.xcodeproj",
+        "identifier" : "8437BD892AB32059009E13AC",
+        "name" : "RSSFeedTests"
+      }
+    }
+  ],
+  "version" : 1
+}
