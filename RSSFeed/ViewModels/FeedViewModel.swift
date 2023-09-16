@@ -12,7 +12,7 @@ import Combine
 class FeedViewModel: ObservableObject {
     let publication: Publication
     
-    let feedService: FeedService
+    let feedService: FeedServiceProtocol
     
     @Published var feed: RSS?
     @Published var loading: Bool = false
