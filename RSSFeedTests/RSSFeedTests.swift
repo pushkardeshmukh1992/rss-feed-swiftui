@@ -103,6 +103,26 @@ final class RSSFeedTests: XCTestCase {
         wait(for: [exp], timeout: 2)
     }
     
+    // MARK: Feed service implementation tests
+    
+    func test_deliversSuccessResponseOnValidURL() {
+        let sut = FeedService()
+        
+        let url = DataUtil.publication1.url
+        
+        let exp = expectation(description: "Fetch publication feeds for given \(url.absoluteString)")
+        
+        sut.getFeed(url: url) { result in
+            switch result {
+            case .success(_):
+                exp.fulfill()
+            case .failure(_): break
+            }
+        }
+        
+        wait(for: [exp], timeout: 4)
+    }
+    
     class MockFeedService: FeedServiceProtocol {
         let result: FeedResult
         
