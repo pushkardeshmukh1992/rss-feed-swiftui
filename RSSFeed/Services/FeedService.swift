@@ -32,7 +32,7 @@ class FeedService: FeedServiceProtocol {
             }
             
             do {
-                let feed = try FeedService.getXMLDecoder().decode(RSS.self, from: data.dataMiddleware())
+                let feed = try XMLDecoderUtil.getXMLDecoder().decode(RSS.self, from: data.dataMiddleware())
                 completion(.success(feed))
                 
             } catch {
@@ -41,13 +41,5 @@ class FeedService: FeedServiceProtocol {
         }.resume()
     }
     
-    static func getXMLDecoder() -> XMLDecoder {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss Z"
-        
-        let decoder = XMLDecoder()
-        decoder.shouldProcessNamespaces = true
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        return decoder
-    }
+    
 }

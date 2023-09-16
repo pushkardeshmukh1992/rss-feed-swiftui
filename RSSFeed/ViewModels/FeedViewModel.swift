@@ -17,7 +17,7 @@ class FeedViewModel: ObservableObject {
     @Published var feed: RSS?
     @Published var loading: Bool = false
     
-    init(publication: Publication, feedService: FeedService = FeedService()) {
+    init(publication: Publication, feedService: FeedServiceProtocol = FeedService()) {
         self.publication = publication
         self.feedService = feedService
     }

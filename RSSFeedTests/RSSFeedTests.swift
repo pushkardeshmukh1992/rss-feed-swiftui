@@ -33,5 +33,16 @@ final class RSSFeedTests: XCTestCase {
         
         XCTAssertNotEqual(oldPublicationState.active, newPublicationState.active)
     }
-
+    
+    // MARK: Feed view model tests
+    
+    func testFeeds_successfullyFetchFeedOnSuccess() {
+        let sub = FeedViewModel(publication: DataUtil.publication1, feedService: MockFeedService())
+    }
+    
+    class MockFeedService: FeedServiceProtocol {
+        func getFeed(url: URL, completion: @escaping (Result<RSSFeed.RSS, RSSFeed.APIError>) -> Void) {
+            
+        }
+    }
 }
