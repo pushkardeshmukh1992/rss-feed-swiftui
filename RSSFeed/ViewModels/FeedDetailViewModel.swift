@@ -27,6 +27,21 @@ class FeedDetailsViewModel: ObservableObject {
         isBookmarked = true
     }
     
+    func removeBookmark() {
+        let bookmarks = feedBookmarkService.get().filter { $0.id != item.id }
+        
+        feedBookmarkService.save(data: bookmarks)
+        isBookmarked = false
+    }
+    
+    func handleBookmark() {
+        if !hasBookmarked() {
+            saveBookmark()
+        } else {
+            removeBookmark()
+        }
+    }
+    
     func hasBookmarked() -> Bool {
         let bookmarks = feedBookmarkService.get()
         
@@ -50,9 +65,16 @@ class FeedBookmarkService {
     func save(data: [FeedItem]) {
         let encoder = JSONEncoder()
         
-        if let encoded = try? encoder.encode(data) {
-            userDetauls.set(encoded, forKey: cacheKey)
+        do {
+            if let encoded = try? encoder.encode(data) {
+                userDetauls.set(encoded, forKey: cacheKey)
+            } else {
+                print("in else")
+            }
+        } catch {
+            print("error saving")
         }
+        
     }
     
     func get() -> [FeedItem] {
