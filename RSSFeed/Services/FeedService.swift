@@ -14,12 +14,14 @@ enum APIError: Error {
     case parseError
 }
 
+typealias FeedResult = Result<RSS, APIError>
+
 protocol FeedServiceProtocol {
-    func getFeed(url: URL, completion: @escaping( _ result: Result<RSS, APIError>) -> Void)
+    func getFeed(url: URL, completion: @escaping( _ result: FeedResult) -> Void)
 }
 
 class FeedService: FeedServiceProtocol {
-    func getFeed(url: URL, completion: @escaping( _ result: Result<RSS, APIError>) -> Void) {
+    func getFeed(url: URL, completion: @escaping( _ result: FeedResult) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard error == nil else {
                 completion(.failure(.httpError))

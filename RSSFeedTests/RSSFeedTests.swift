@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import Combine
+
 @testable import RSSFeed
 
 final class RSSFeedTests: XCTestCase {
@@ -36,13 +38,35 @@ final class RSSFeedTests: XCTestCase {
     
     // MARK: Feed view model tests
     
+    var cancellables = [AnyCancellable]()
+    
     func testFeeds_successfullyFetchFeedOnSuccess() {
-        let sub = FeedViewModel(publication: DataUtil.publication1, feedService: MockFeedService())
+        let result = FeedResult.success(DataUtil.defaultRSS)
+        
+        let sut = FeedViewModel(publication: DataUtil.publication1, feedService: MockFeedService(result: result))
+        
+        sut.getFeed()
+        
+        let exp = expectation(description: "Getting feed data for a publication")
+        
+        sut.$feed.sink { rss in
+            if rss != nil {
+                exp.fulfill()
+            }
+        }.store(in: &cancellables)
+        
+        wait(for: [exp], timeout: 2)
     }
     
     class MockFeedService: FeedServiceProtocol {
-        func getFeed(url: URL, completion: @escaping (Result<RSSFeed.RSS, RSSFeed.APIError>) -> Void) {
-            
+        let result: FeedResult
+        
+        init(result: FeedResult) {
+            self.result = result
+        }
+        
+        func getFeed(url: URL, completion: @escaping (FeedResult) -> Void) {
+            completion(result)
         }
     }
 }
