@@ -23,7 +23,6 @@ class FeedViewModel: ObservableObject {
         guard feed == nil else { return }
         
         let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MMM d, h:mm a"
         dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss Z"
         
         let decoder = XMLDecoder()
@@ -51,10 +50,6 @@ class FeedViewModel: ObservableObject {
                 }
             }
         }.resume()
-    }
-    
-    func getActiveChannelList() -> Void {
-        
     }
 }
 
