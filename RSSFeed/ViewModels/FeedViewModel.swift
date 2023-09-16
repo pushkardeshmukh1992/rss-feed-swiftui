@@ -16,6 +16,7 @@ class FeedViewModel: ObservableObject {
     
     @Published var feed: RSS?
     @Published var loading: Bool = false
+    @Published var error: APIError?
     
     init(publication: Publication, feedService: FeedServiceProtocol = FeedService()) {
         self.publication = publication
@@ -33,8 +34,8 @@ class FeedViewModel: ObservableObject {
                 switch result {
                 case .success(let feed):
                     self?.feed = feed
-                case .failure(_):
-                    print("handle error")
+                case .failure(let error):
+                    self?.error = error
                 }
             }
         }

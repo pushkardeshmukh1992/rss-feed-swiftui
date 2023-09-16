@@ -40,7 +40,7 @@ final class RSSFeedTests: XCTestCase {
     
     var cancellables = [AnyCancellable]()
     
-    func testFeeds_successfullyFetchFeedOnSuccess() {
+    func testFeeds_deliversSuccessOnSuccessfulFeedFetch() {
         let result = FeedResult.success(DataUtil.defaultRSS)
         
         let sut = FeedViewModel(publication: DataUtil.publication1, feedService: MockFeedService(result: result))
@@ -83,6 +83,24 @@ final class RSSFeedTests: XCTestCase {
         exp.fulfill()
         
         wait(for: [exp], timeout: 3)
+    }
+    
+    func testFeeds_deliversFailureOnFeedFetchForHTTPError() {
+        let result = FeedResult.failure(.httpError)
+        
+        let sut = FeedViewModel(publication: DataUtil.publication1, feedService: MockFeedService(result: result))
+        
+        sut.getFeed()
+        
+        let exp = expectation(description: "Getting feed data for a publication")
+        
+        sut.$error.sink { error in
+            if let _ = error {
+                exp.fulfill()
+            }
+        }.store(in: &cancellables)
+        
+        wait(for: [exp], timeout: 2)
     }
     
     class MockFeedService: FeedServiceProtocol {
