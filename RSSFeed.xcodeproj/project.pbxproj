@@ -34,6 +34,8 @@
 		8484F46B2AB3696100F7BF91 /* PublicationListRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F46A2AB3696100F7BF91 /* PublicationListRowView.swift */; };
 		8484F46E2AB3712E00F7BF91 /* DataUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F46D2AB3712E00F7BF91 /* DataUtil.swift */; };
 		8484F4702AB3748B00F7BF91 /* FeedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8484F46F2AB3748B00F7BF91 /* FeedDetailsView.swift */; };
+		849F70582AB6BD4D004C03FC /* PublicationsViewModelTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F70572AB6BD4D004C03FC /* PublicationsViewModelTestCases.swift */; };
+		849F705A2AB6BD94004C03FC /* FeedViewModelTestCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F70592AB6BD94004C03FC /* FeedViewModelTestCases.swift */; };
 		9676839377694AF741CBE0C2 /* Pods_RSSFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD3F6ED58A18C2AAA66F8C /* Pods_RSSFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		8484F46D2AB3712E00F7BF91 /* DataUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUtil.swift; sourceTree = "<group>"; };
 		8484F46F2AB3748B00F7BF91 /* FeedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailsView.swift; sourceTree = "<group>"; };
 		849F70562AB62213004C03FC /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = TestPlan.xctestplan; path = RSSFeed/TestPlan.xctestplan; sourceTree = "<group>"; };
+		849F70572AB6BD4D004C03FC /* PublicationsViewModelTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicationsViewModelTestCases.swift; sourceTree = "<group>"; };
+		849F70592AB6BD94004C03FC /* FeedViewModelTestCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModelTestCases.swift; sourceTree = "<group>"; };
 		CDCA70D9B3D88A327DA64D7D /* Pods-RSSFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedTests.release.xcconfig"; path = "Target Support Files/Pods-RSSFeedTests/Pods-RSSFeedTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1845818F0CBB8FADA5F0776 /* Pods-RSSFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeed.release.xcconfig"; path = "Target Support Files/Pods-RSSFeed/Pods-RSSFeed.release.xcconfig"; sourceTree = "<group>"; };
 		EFDD3F6ED58A18C2AAA66F8C /* Pods_RSSFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSSFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,7 +178,8 @@
 		8437BD8D2AB32059009E13AC /* RSSFeedTests */ = {
 			isa = PBXGroup;
 			children = (
-				844990A92AB6052600517D86 /* NetworkingManager */,
+				849F705B2AB6BDF4004C03FC /* ViewModels */,
+				844990A92AB6052600517D86 /* Services */,
 				844990A82AB6051900517D86 /* Mocks */,
 				8437BD8E2AB32059009E13AC /* RSSFeedTests.swift */,
 			);
@@ -231,12 +236,12 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
-		844990A92AB6052600517D86 /* NetworkingManager */ = {
+		844990A92AB6052600517D86 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				844990AA2AB6054D00517D86 /* FeedServiceTests.swift */,
 			);
-			path = NetworkingManager;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		8484F45F2AB3618000F7BF91 /* Extensions */ = {
@@ -256,6 +261,15 @@
 				844990A42AB5AD3100517D86 /* XMLDecoderUtil.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		849F705B2AB6BDF4004C03FC /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				849F70572AB6BD4D004C03FC /* PublicationsViewModelTestCases.swift */,
+				849F70592AB6BD94004C03FC /* FeedViewModelTestCases.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,7 +469,9 @@
 			files = (
 				844990A72AB6017D00517D86 /* MockURLSessionProtocol.swift in Sources */,
 				8437BD8F2AB32059009E13AC /* RSSFeedTests.swift in Sources */,
+				849F705A2AB6BD94004C03FC /* FeedViewModelTestCases.swift in Sources */,
 				844990AB2AB6054D00517D86 /* FeedServiceTests.swift in Sources */,
+				849F70582AB6BD4D004C03FC /* PublicationsViewModelTestCases.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
