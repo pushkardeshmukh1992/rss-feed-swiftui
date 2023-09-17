@@ -17,7 +17,14 @@ struct PublicationListRowView: View {
                 .scaledToFit()
                 .padding(0)
                 .background(.white.opacity(1))
+            
+            Text(publication.title)
+                .padding(.horizontal, 16)
+                .font(.subheadline)
+                
         }
+        .padding(.vertical, 24)
+        
     }
 }
 
