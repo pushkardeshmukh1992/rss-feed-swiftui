@@ -18,7 +18,7 @@ class FeedDetailsViewModel: ObservableObject {
         self.item = item
         self.feedBookmarkService = feedBookmarkService
         
-        isBookmarked = hasBookmarked()
+        checkAndUpdateBookmark()
     }
     
     func saveBookmark() {

@@ -11,6 +11,10 @@ import XCTest
 final class FeedDatailViewModelTests: XCTestCase {
     let key = "FeedDatailViewModelTests"
     
+    override func setUp() {
+        UserDefaults.standard.setValue(nil, forKey: key)
+    }
+    
     func test_initiBookmarkShouldBeDisabled() {
         let bookmarkService = FeedBookmarkService(cacheKey: key)
         
@@ -39,4 +43,16 @@ final class FeedDatailViewModelTests: XCTestCase {
         XCTAssertEqual(sut.isBookmarked, false)
     }
     
+    func test_handleBookmarkActionShouldAddOrRemoveBookmark() {
+        let bookmarkService = FeedBookmarkService(cacheKey: key)
+        
+        let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: bookmarkService)
+        
+        sut.isBookmarked = false
+        sut.handleBookmark()
+        XCTAssertEqual(sut.isBookmarked, true)
+        
+        sut.handleBookmark()
+        XCTAssertEqual(sut.isBookmarked, false)
+    }
 }
