@@ -15,8 +15,9 @@ final class PublicationsViewModelTestCases: XCTestCase {
     func testPublications_initialLoadShouldHaveAtLeastOneActivePublication() {
         let sut = PublicationsViewModel()
         
+        let active = sut.isAnyPublicationActive()
         XCTAssertNotEqual(sut.publications.count, 0)
-        XCTAssertEqual(sut.publications[0].active, true)
+        XCTAssertEqual(active, true)
     }
     
     func testPublications_publicationShouldToggleActiveFlag() {
