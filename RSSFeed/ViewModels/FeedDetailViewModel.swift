@@ -14,7 +14,7 @@ class FeedDetailsViewModel: ObservableObject {
     
     let item: FeedItem
     
-    init(item: FeedItem, feedBookmarkService: FeedBookmarkServiceProtocol = FeedBookmarkService(cacheKey: "FeedItemBookMarks")) {
+    init(item: FeedItem, feedBookmarkService: FeedBookmarkServiceProtocol = FeedBookmarkService(cacheKey: CacheConstants.bookmarkCacheKey)) {
         self.item = item
         self.feedBookmarkService = feedBookmarkService
         
