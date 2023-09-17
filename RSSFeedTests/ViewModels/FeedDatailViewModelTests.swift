@@ -9,32 +9,34 @@ import XCTest
 @testable import RSSFeed
 
 final class FeedDatailViewModelTests: XCTestCase {
+    let key = "FeedDatailViewModelTests"
+    
     func test_initiBookmarkShouldBeDisabled() {
-        let mockFeedBookmarkService: FeedBookmarkServiceProtocol = MockFeedBookmarkService()
+        let bookmarkService = FeedBookmarkService(cacheKey: key)
         
-        let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: mockFeedBookmarkService)
+        let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: bookmarkService)
         
         XCTAssertEqual(sut.isBookmarked, false)
     }
     
-    
-    class MockFeedBookmarkService: FeedBookmarkServiceProtocol {
-        var items = [Any]()
+    func test_saveBookmarkShouldAddBookmark() {
+        let bookmarkService = FeedBookmarkService(cacheKey: key)
         
-        func save<T>(data: T) {
-            items.append(data)
-        }
+        let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: bookmarkService)
         
-        func get() -> [RSSFeed.FeedItem] {
-            var tempItems = [RSSFeed.FeedItem]()
-            
-            items.forEach { item in
-                if let feedItem = item as? RSSFeed.FeedItem {
-                    tempItems.append(feedItem)
-                }
-            }
-            
-            return tempItems
-        }
+        sut.saveBookmark()
+        
+        XCTAssertEqual(sut.isBookmarked, true)
     }
+    
+    func test_removeBookmarkShouldRemoveBookmark() {
+        let bookmarkService = FeedBookmarkService(cacheKey: key)
+        
+        let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: bookmarkService)
+        
+        sut.removeBookmark()
+        
+        XCTAssertEqual(sut.isBookmarked, false)
+    }
+    
 }

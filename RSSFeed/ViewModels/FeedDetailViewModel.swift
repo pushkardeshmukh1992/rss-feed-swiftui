@@ -10,7 +10,7 @@ import Foundation
 class FeedDetailsViewModel: ObservableObject {
     @Published var isBookmarked = false
     
-    private let feedBookmarkService: FeedBookmarkServiceProtocol
+    let feedBookmarkService: FeedBookmarkServiceProtocol
     
     let item: FeedItem
     
@@ -24,16 +24,16 @@ class FeedDetailsViewModel: ObservableObject {
     func saveBookmark() {
         var bookmarks = feedBookmarkService.get()
         bookmarks.append(item)
-        
+
         feedBookmarkService.save(data: bookmarks)
-        isBookmarked = true
+        isBookmarked = hasBookmarked()
     }
     
     func removeBookmark() {
         let bookmarks = feedBookmarkService.get().filter { $0.id != item.id }
         
         feedBookmarkService.save(data: bookmarks)
-        isBookmarked = false
+        isBookmarked = hasBookmarked()
     }
     
     func handleBookmark() {
