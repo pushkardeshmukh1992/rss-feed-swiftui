@@ -1,4 +1,4 @@
-# rss-feed-swiftui
+# RSS Feed Reader (SwiftUI + MVVM)
 
 This is the demo RSS Feed reader app.
 
