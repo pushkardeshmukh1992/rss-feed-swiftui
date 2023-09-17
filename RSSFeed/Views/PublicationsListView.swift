@@ -44,7 +44,8 @@ struct PublicationsListView: View {
                         .frame(width: 48, height: 48)
                 }
                 .accentColor(Color(ColorUtil.PrimaryLightBlackDarkWhite))
-                .padding(.trailing, 32)
+                .padding(.trailing, 72)
+                .padding(.bottom, 72)
                 .frame(width: 48, height: 48)
                 , alignment: .bottomTrailing
             )

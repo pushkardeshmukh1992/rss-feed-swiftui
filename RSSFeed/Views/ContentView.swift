@@ -9,10 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        TabView {
             PublicationsListView()
-        }
-        
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+            
+            Text("Bookmarks")
+                .tabItem {
+                    Label("Bookmarks", systemImage: "bookmark")
+                }
+        }        
     }
 }
 
