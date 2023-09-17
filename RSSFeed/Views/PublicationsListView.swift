@@ -50,7 +50,6 @@ struct PublicationsListView: View {
                 , alignment: .bottomTrailing
             )
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(.red)
             .navigationBarTitle("Publications", displayMode: .inline)
         }
         .sheet(isPresented: $showAddView) {

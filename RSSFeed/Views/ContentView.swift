@@ -15,11 +15,11 @@ struct ContentView: View {
                     Label("Home", systemImage: "house")
                 }
             
-            Text("Bookmarks")
+            FeedItemsListView()
                 .tabItem {
                     Label("Bookmarks", systemImage: "bookmark")
                 }
-        }        
+        }
     }
 }
 

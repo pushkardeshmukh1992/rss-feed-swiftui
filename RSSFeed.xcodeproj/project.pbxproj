@@ -40,6 +40,8 @@
 		849F705F2AB6CAE1004C03FC /* FeedBookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F705E2AB6CAE1004C03FC /* FeedBookmarkService.swift */; };
 		849F70612AB6CD21004C03FC /* FeedDatailViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F70602AB6CD21004C03FC /* FeedDatailViewModelTests.swift */; };
 		849F70642AB7083C004C03FC /* UtilTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F70632AB7083C004C03FC /* UtilTests.swift */; };
+		849F70672AB7615D004C03FC /* FeedItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F70662AB7615D004C03FC /* FeedItemsListView.swift */; };
+		849F706A2AB761AA004C03FC /* CacheConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F70692AB761AA004C03FC /* CacheConstants.swift */; };
 		9676839377694AF741CBE0C2 /* Pods_RSSFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD3F6ED58A18C2AAA66F8C /* Pods_RSSFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +94,8 @@
 		849F70602AB6CD21004C03FC /* FeedDatailViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDatailViewModelTests.swift; sourceTree = "<group>"; };
 		849F70632AB7083C004C03FC /* UtilTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilTests.swift; sourceTree = "<group>"; };
 		849F70652AB730DF004C03FC /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
+		849F70662AB7615D004C03FC /* FeedItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsListView.swift; sourceTree = "<group>"; };
+		849F70692AB761AA004C03FC /* CacheConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheConstants.swift; sourceTree = "<group>"; };
 		CDCA70D9B3D88A327DA64D7D /* Pods-RSSFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedTests.release.xcconfig"; path = "Target Support Files/Pods-RSSFeedTests/Pods-RSSFeedTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1845818F0CBB8FADA5F0776 /* Pods-RSSFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeed.release.xcconfig"; path = "Target Support Files/Pods-RSSFeed/Pods-RSSFeed.release.xcconfig"; sourceTree = "<group>"; };
 		EFDD3F6ED58A18C2AAA66F8C /* Pods_RSSFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSSFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +166,7 @@
 		8437BD7C2AB32058009E13AC /* RSSFeed */ = {
 			isa = PBXGroup;
 			children = (
+				849F70682AB7619D004C03FC /* Constants */,
 				8484F46C2AB3712100F7BF91 /* Utils */,
 				8484F45F2AB3618000F7BF91 /* Extensions */,
 				8437BDAB2AB3214C009E13AC /* Services */,
@@ -207,6 +212,7 @@
 				8484F46A2AB3696100F7BF91 /* PublicationListRowView.swift */,
 				8484F46F2AB3748B00F7BF91 /* FeedDetailsView.swift */,
 				8449909D2AB47CFF00517D86 /* AddPublicationsView.swift */,
+				849F70662AB7615D004C03FC /* FeedItemsListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,6 +296,14 @@
 				849F70632AB7083C004C03FC /* UtilTests.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		849F70682AB7619D004C03FC /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				849F70692AB761AA004C03FC /* CacheConstants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,10 +476,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8437BDAD2AB321C0009E13AC /* FeedListView.swift in Sources */,
+				849F706A2AB761AA004C03FC /* CacheConstants.swift in Sources */,
 				8484F46E2AB3712E00F7BF91 /* DataUtil.swift in Sources */,
 				8484F46B2AB3696100F7BF91 /* PublicationListRowView.swift in Sources */,
 				8449909E2AB47CFF00517D86 /* AddPublicationsView.swift in Sources */,
 				844990962AB443FB00517D86 /* FeedListHeaderView.swift in Sources */,
+				849F70672AB7615D004C03FC /* FeedItemsListView.swift in Sources */,
 				8484F4692AB3665B00F7BF91 /* PublicationsListView.swift in Sources */,
 				8449909C2AB46A5100517D86 /* DateUtil.swift in Sources */,
 				8437BD802AB32058009E13AC /* ContentView.swift in Sources */,
