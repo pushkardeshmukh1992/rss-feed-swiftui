@@ -18,7 +18,7 @@ class FeedServiceTests: XCTestCase {
             return
         }
         
-        let feed = try XMLDecoderUtil.getXMLDecoder().decode(RSS.self, from: data.dataMiddleware())
+        let feed = try XMLDecoderUtil.getXMLDecoder().decode(RSS.self, from: data.dataMiddleware()!)
         
         let session = getSession(data: data, error: nil)
         let sut = FeedService()

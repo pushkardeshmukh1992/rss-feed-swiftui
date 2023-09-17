@@ -35,13 +35,13 @@ class FeedService: FeedServiceProtocol {
                 return
             }
             
-            guard let data = data else {
+            guard let data = data, let tempData = data.dataMiddleware() else {
                 completion(.failure(.dataError))
                 return
             }
             
             do {
-                let feed = try XMLDecoderUtil.getXMLDecoder().decode(RSS.self, from: data.dataMiddleware())
+                let feed = try XMLDecoderUtil.getXMLDecoder().decode(RSS.self, from: tempData)
                 completion(.success(feed))
                 
             } catch {
