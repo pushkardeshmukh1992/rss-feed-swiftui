@@ -53,7 +53,12 @@ class FeedDetailsViewModel: ObservableObject {
     }
 }
 
-class FeedBookmarkService {
+protocol FeedBookmarkServiceProtocol {
+    func save(data: [FeedItem])
+    func get() -> [FeedItem]
+}
+
+class FeedBookmarkService: FeedBookmarkServiceProtocol {
     private let userDetauls = UserDefaults.standard
     
     let cacheKey: String
@@ -65,16 +70,11 @@ class FeedBookmarkService {
     func save(data: [FeedItem]) {
         let encoder = JSONEncoder()
         
-        do {
-            if let encoded = try? encoder.encode(data) {
-                userDetauls.set(encoded, forKey: cacheKey)
-            } else {
-                print("in else")
-            }
-        } catch {
-            print("error saving")
+        if let encoded = try? encoder.encode(data) {
+            userDetauls.set(encoded, forKey: cacheKey)
+        } else {
+            print("in else")
         }
-        
     }
     
     func get() -> [FeedItem] {
