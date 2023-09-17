@@ -89,13 +89,6 @@ class FeedServiceTests: XCTestCase {
         wait(for: [exp], timeout: 3)
     }
     
-    private func getSession() -> URLSession {
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [MockURLSessionProtocol.self]
-        
-        return URLSession(configuration: configuration)
-    }
-    
     private func getSession(data: Data?, error: APIError?) -> URLSession {
         let session = URLSessionMock()
         session.data = data
