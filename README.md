@@ -10,7 +10,8 @@ App uses following services to get publications and its related data:
 1. https://medium.com/feed/the-economist
 1. https://medium.com/feed/matter
 
-Highlights/Features of RSS Feader:
+# Highlights/Features of RSS Feader
+
 * Shows publications on home screen. Tapping on details fetches the feed data for respective publication
 * Bookmark a feed feature
 * Support for Light and Dark theme
