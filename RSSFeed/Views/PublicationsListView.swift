@@ -15,18 +15,24 @@ struct PublicationsListView: View {
     var body: some View {
         NavigationView {
             VStack {
-                List {
-                    ForEach(publicationsViewModel.publications) { publication in
-                        if publication.active {
-                            NavigationLink {
-                                FeedListView(feedViewModel: FeedViewModel(publication: publication))
-                            } label: {
-                                PublicationListRowView(publication: publication)
+                if !publicationsViewModel.isAnyPublicationActive() {
+                    List {
+                        Text("You are not following any publications. \n\n Please tap on + button below, to stay updated about latest articles!")
+                            .multilineTextAlignment(.center)
+                    }
+                } else {
+                    List {
+                        ForEach(publicationsViewModel.publications) { publication in
+                            if publication.active {
+                                NavigationLink {
+                                    FeedListView(feedViewModel: FeedViewModel(publication: publication))
+                                } label: {
+                                    PublicationListRowView(publication: publication)
+                                }
                             }
                         }
                     }
                 }
-                .navigationBarTitle("Publications", displayMode: .inline)
             }
             .overlay(
                 Button {
@@ -42,6 +48,9 @@ struct PublicationsListView: View {
                 .frame(width: 48, height: 48)
                 , alignment: .bottomTrailing
             )
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.red)
+            .navigationBarTitle("Publications", displayMode: .inline)
         }
         .sheet(isPresented: $showAddView) {
             AddPublicationsView(publicationsViewModel: publicationsViewModel)

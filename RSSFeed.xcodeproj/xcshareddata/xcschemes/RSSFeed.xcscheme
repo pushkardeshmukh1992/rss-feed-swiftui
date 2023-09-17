@@ -33,7 +33,7 @@
             default = "YES">
          </TestPlanReference>
          <TestPlanReference
-            reference = "container:RSSFeed/TestPlan.xctestplan">
+            reference = "container:TestPlan.xctestplan">
          </TestPlanReference>
       </TestPlans>
       <Testables>
