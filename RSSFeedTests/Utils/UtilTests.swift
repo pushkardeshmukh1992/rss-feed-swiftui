@@ -24,5 +24,12 @@ class UtilTests: XCTestCase {
         XCTAssertEqual(urlString, rss.rss?.channel.image.imageURL.absoluteString)
         
     }
+    
+    func test_feedItemStruct_ifURLComputedPropertyIsGenerated() {
+        let feedItem = DataUtil.feedItem
+        let urlString = feedItem.linkString
+        
+        XCTAssertEqual(urlString, feedItem.url?.absoluteString)
+    }
 
 }
