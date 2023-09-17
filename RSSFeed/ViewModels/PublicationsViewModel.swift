@@ -25,6 +25,11 @@ class PublicationsViewModel: ObservableObject {
             return tempPublication
         }
     }
+    
+    func isAnyPublicationActive() -> Bool {
+        let publication = publications.first { $0.active }
+        return publication != nil
+    }
 }
 
 

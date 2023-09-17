@@ -17,7 +17,7 @@ enum DataUtil {
                                           url: URL(string: "https://medium.com/feed/backchannel")!,
                                           title: "Backchannel Tech Publication",
                                           localImage: "backchannel-channel",
-                                          active: true
+                                          active: false
                                         )
     
     static let publication2 = Publication(id: "2",
