@@ -7,7 +7,12 @@
 
 import Foundation
 
-class FeedBookmarkService {
+protocol FeedBookmarkServiceProtocol {
+    func save<T: Codable>(data: T)
+    func get() -> [FeedItem]
+}
+
+class FeedBookmarkService: FeedBookmarkServiceProtocol {
     let cacheKey: String
     
     init(cacheKey: String) {

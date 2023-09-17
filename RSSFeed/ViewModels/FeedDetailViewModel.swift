@@ -10,12 +10,14 @@ import Foundation
 class FeedDetailsViewModel: ObservableObject {
     @Published var isBookmarked = false
     
-    private let feedBookmarkService = FeedBookmarkService(cacheKey: "FeedItemBookMarks")
+    private let feedBookmarkService: FeedBookmarkServiceProtocol
     
     let item: FeedItem
     
-    init(item: FeedItem) {
+    init(item: FeedItem, feedBookmarkService: FeedBookmarkServiceProtocol = FeedBookmarkService(cacheKey: "FeedItemBookMarks")) {
         self.item = item
+        self.feedBookmarkService = feedBookmarkService
+        
         isBookmarked = hasBookmarked()
     }
     
