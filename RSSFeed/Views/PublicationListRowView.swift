@@ -16,6 +16,7 @@ struct PublicationListRowView: View {
                 .resizable()
                 .scaledToFit()
                 .padding(0)
+                .background(.white.opacity(1))
         }
     }
 }
