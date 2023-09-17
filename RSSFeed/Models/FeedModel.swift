@@ -11,7 +11,11 @@ struct RSSResponse: Codable {
     let rss: RSS
 }
 
-struct RSS: Codable {
+struct RSS: Codable, Equatable {
+    static func == (lhs: RSS, rhs: RSS) -> Bool {
+        return lhs.channel.title == rhs.channel.title
+    }
+    
     let channel: Channel
 }
 
@@ -38,7 +42,7 @@ struct ChannelImage: Codable {
     }
 }
 
-struct FeedItem: Codable, Identifiable {
+struct FeedItem: Codable, Identifiable, Equatable {
     var id: String { title }
     let title: String
     let linkString: String

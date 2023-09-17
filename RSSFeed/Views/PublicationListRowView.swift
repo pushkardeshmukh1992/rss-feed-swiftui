@@ -12,9 +12,11 @@ struct PublicationListRowView: View {
     
     var body: some View {
         VStack {
-            Text(publication.title)
+            Image(publication.localImage ?? "")
+                .resizable()
+                .scaledToFit()
+                .padding(0)
         }
-        
     }
 }
 

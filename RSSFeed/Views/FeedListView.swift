@@ -16,39 +16,44 @@ struct FeedListView: View {
                 ProgressView()
             } else {
                 ScrollView {
-                    VStack(alignment: .leading) {
-                        AsyncImage(url: feedViewModel.feed?.channel.image.imageURL) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .background(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 16)
+                    if let _ = feedViewModel.error {
+                        Text("Failed to fetch data")
+                    } else {
+                        VStack(alignment: .leading) {
+                            AsyncImage(url: feedViewModel.feed?.channel.image.imageURL) { image in
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .background(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 16)
 
-                        Text(feedViewModel.feed?.channel.title ?? "Heading")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .multilineTextAlignment(.leading)
-                        
-                        Text(feedViewModel.feed?.channel.description ?? "Subheading")
-                            .font(.subheadline)
-                    }
-                    .padding(.horizontal, 16)
-                    
-                    ForEach(feedViewModel.feed?.channel.items ?? []) { item in
-                        
-                        NavigationLink {
-                            FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: item))
-                                
-                        } label: {
-                            FeedListRowView(item: item)
+                            Text(feedViewModel.feed?.channel.title ?? "Heading")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.leading)
+                            
+                            Text(feedViewModel.feed?.channel.description ?? "Subheading")
+                                .font(.subheadline)
                         }
-                        .buttonStyle(.plain)
+                        .padding(.horizontal, 16)
+                        
+                        ForEach(feedViewModel.feed?.channel.items ?? []) { item in
+                            
+                            NavigationLink {
+                                FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: item))
+                                    
+                            } label: {
+                                FeedListRowView(item: item)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        .padding(.top, 16)
                     }
-                    .padding(.top, 16)
+                    
                 }
             }
         }.task {

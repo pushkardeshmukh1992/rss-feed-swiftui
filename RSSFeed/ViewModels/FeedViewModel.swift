@@ -12,49 +12,33 @@ import Combine
 class FeedViewModel: ObservableObject {
     let publication: Publication
     
+    let feedService: FeedServiceProtocol
+    
     @Published var feed: RSS?
     @Published var loading: Bool = false
+    @Published var error: APIError?
     
-    init(publication: Publication) {
+    init(publication: Publication, feedService: FeedServiceProtocol = FeedService()) {
         self.publication = publication
+        self.feedService = feedService
     }
     
     func getFeed() {
         guard feed == nil else { return }
         
-        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MMM d, h:mm a"
-        dateFormatter.dateFormat = "E, dd MMM yyyy HH:mm:ss Z"
-        
-        let decoder = XMLDecoder()
-        decoder.shouldProcessNamespaces = true
-        decoder.dateDecodingStrategy = .formatted(dateFormatter)
-        
         loading = true
         
-        URLSession.shared.dataTask(with: publication.url) { [weak self] data, response, error in
-            DispatchQueue.main.async { [weak self] in
+        feedService.getFeed(url: publication.url) { [weak self] result in
+            DispatchQueue.main.async {
                 self?.loading = false
-            }
-            
-            if let data = data  {
-                do {
-                    
-                    let feed = try decoder.decode(RSS.self, from: data.dataMiddleware())
-                    
-                    DispatchQueue.main.async { [weak self] in
-                        self?.feed = feed
-                    }
-                    
-                } catch {
-                    print(error)
+                switch result {
+                case .success(let feed):
+                    self?.feed = feed
+                case .failure(let error):
+                    self?.error = error
                 }
             }
-        }.resume()
-    }
-    
-    func getActiveChannelList() -> Void {
-        
+        }
     }
 }
 

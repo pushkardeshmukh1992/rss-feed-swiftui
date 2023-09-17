@@ -10,21 +10,38 @@ import Foundation
 class FeedDetailsViewModel: ObservableObject {
     @Published var isBookmarked = false
     
-    private let feedBookmarkService = FeedBookmarkService(cacheKey: "FeedItemBookMarks")
+    let feedBookmarkService: FeedBookmarkServiceProtocol
     
     let item: FeedItem
     
-    init(item: FeedItem) {
+    init(item: FeedItem, feedBookmarkService: FeedBookmarkServiceProtocol = FeedBookmarkService(cacheKey: "FeedItemBookMarks")) {
         self.item = item
-        isBookmarked = hasBookmarked()
+        self.feedBookmarkService = feedBookmarkService
+        
+        checkAndUpdateBookmark()
     }
     
     func saveBookmark() {
         var bookmarks = feedBookmarkService.get()
         bookmarks.append(item)
+
+        feedBookmarkService.save(data: bookmarks)
+        isBookmarked = hasBookmarked()
+    }
+    
+    func removeBookmark() {
+        let bookmarks = feedBookmarkService.get().filter { $0.id != item.id }
         
         feedBookmarkService.save(data: bookmarks)
-        isBookmarked = true
+        isBookmarked = hasBookmarked()
+    }
+    
+    func handleBookmark() {
+        if !hasBookmarked() {
+            saveBookmark()
+        } else {
+            removeBookmark()
+        }
     }
     
     func hasBookmarked() -> Bool {
@@ -35,35 +52,5 @@ class FeedDetailsViewModel: ObservableObject {
     
     func checkAndUpdateBookmark() {
         self.isBookmarked = hasBookmarked()
-    }
-}
-
-class FeedBookmarkService {
-    private let userDetauls = UserDefaults.standard
-    
-    let cacheKey: String
-    
-    init(cacheKey: String) {
-        self.cacheKey = cacheKey
-    }
-    
-    func save(data: [FeedItem]) {
-        let encoder = JSONEncoder()
-        
-        if let encoded = try? encoder.encode(data) {
-            userDetauls.set(encoded, forKey: cacheKey)
-        }
-    }
-    
-    func get() -> [FeedItem] {
-        if let data = userDetauls.object(forKey: cacheKey) as? Data {
-            let decoder = JSONDecoder()
-            
-            if let object = try? decoder.decode([FeedItem].self, from: data) {
-                return object
-            }
-        }
-        
-        return []
     }
 }

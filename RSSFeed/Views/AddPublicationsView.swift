@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AddPublicationsView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     @ObservedObject var publicationsViewModel: PublicationsViewModel
     
     var body: some View {
@@ -29,7 +31,6 @@ struct AddPublicationsView: View {
                                 Image(systemName: "checkmark")
                             }
                         }
-//                        .listRowBackground(Color.)
                         .contentShape(Rectangle())
                         .onTapGesture {
                             publicationsViewModel.toggleActivePublication(publication: publication)
@@ -42,7 +43,13 @@ struct AddPublicationsView: View {
             }
             .frame(maxHeight: .infinity)
             .navigationBarTitle("Publications", displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {
+                presentationMode.wrappedValue.dismiss()
+            }, label: {
+                Image(systemName: "xmark")
+            }))
         }
+        
     }
 }
 

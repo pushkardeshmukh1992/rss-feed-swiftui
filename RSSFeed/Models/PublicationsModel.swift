@@ -12,8 +12,7 @@ struct Publication: Identifiable {
     let rss: RSS?
     let url: URL
     let title: String
+    var localImage: String?
     
     var active: Bool = false
-    
-    
 }

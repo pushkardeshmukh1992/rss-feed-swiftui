@@ -22,7 +22,7 @@ struct FeedDetailsView: View {
         }
         .navigationBarItems(trailing: VStack {
             Button {
-                feedDetailsViewModel.saveBookmark()
+                feedDetailsViewModel.handleBookmark()
             } label: {
                 Image(systemName: feedDetailsViewModel.isBookmarked ? "bookmark.fill" : "bookmark")
             }

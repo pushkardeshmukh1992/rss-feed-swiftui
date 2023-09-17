@@ -6,12 +6,8 @@
 //
 
 import XCTest
+
 @testable import RSSFeed
 
-final class RSSFeedTests: XCTestCase {
-
-    func test() {
-        XCTAssertEqual("test", "test")
-    }
-
+final class RSSFeedTests: XCTestCase {    
 }
