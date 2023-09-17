@@ -16,8 +16,6 @@ struct RSS: Codable, Equatable {
         return lhs.channel.title == rhs.channel.title
     }
     
-    
-    
     let channel: Channel
 }
 

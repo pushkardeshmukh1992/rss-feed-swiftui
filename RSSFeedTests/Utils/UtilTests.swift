@@ -16,5 +16,13 @@ class UtilTests: XCTestCase {
         
         XCTAssertEqual(formattedString, "04 Jan, 1:30 AM")
     }
+    
+    func test_channelStruct_ifImageURLComputedPropertyIsGenerated() {
+        let rss = DataUtil.publication1
+        let urlString = rss.rss?.channel.image.url
+        
+        XCTAssertEqual(urlString, rss.rss?.channel.image.imageURL.absoluteString)
+        
+    }
 
 }
