@@ -11,14 +11,18 @@ import XCTest
 final class BookmarkServiceTests: XCTestCase {
     let key = "TestBookMark"
     
+    override func setUp() {
+        UserDefaults.standard.removeObject(forKey: key)
+    }
+    
     func test_savesDataOnSuccessfullSave() {
         let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
-        let itemsToSave = [DataUtil.feedItem]
-        let _ = sut.save(data: itemsToSave)
+        let itemToSave = DataUtil.feedItem
+        let _ = sut.save(data: itemToSave)
         let savedItems = sut.get()
         
-        XCTAssertEqual(itemsToSave, savedItems)
+        XCTAssertEqual([itemToSave], savedItems)
     }
     
     func test_shouldReturnEmptyOnInvalidEncodableData() {

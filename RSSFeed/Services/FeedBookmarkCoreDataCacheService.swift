@@ -29,20 +29,15 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
     }
 
     func save<T>(data: T) -> Bool {
-        guard let feedItems = data as? [FeedItem] else { return false }
+        guard let feedItem = data as? FeedItem else { return false }
 
-        let _ = feedItems.compactMap { feedItem in
-            if let bookmark: Bookmarks = NSEntityDescription.insertNewObject(forEntityName: EntityConstant.bookmarks, into: container.viewContext) as? Bookmarks {
-                bookmark.title = feedItem.title
-                bookmark.linkString = feedItem.linkString
-                bookmark.pubDate = feedItem.pubDate
-                bookmark.creator = feedItem.creator
-                bookmark.content = feedItem.content
-                bookmark.category = feedItem.category as NSArray
-                
-                return bookmark
-            }
-            return nil
+        if let bookmark: Bookmarks = NSEntityDescription.insertNewObject(forEntityName: EntityConstant.bookmarks, into: container.viewContext) as? Bookmarks {
+            bookmark.title = feedItem.title
+            bookmark.linkString = feedItem.linkString
+            bookmark.pubDate = feedItem.pubDate
+            bookmark.creator = feedItem.creator
+            bookmark.content = feedItem.content
+            bookmark.category = feedItem.category as NSArray
         }
         
         do {

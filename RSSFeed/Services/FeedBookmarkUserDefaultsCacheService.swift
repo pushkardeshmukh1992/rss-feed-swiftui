@@ -21,10 +21,15 @@ class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
     }
     
     func save<T: Codable>(data: T) -> Bool {
+        guard let data = data as? FeedItem else { return false }
+        
         let encoder = JSONEncoder()
         
         do {
-            let encoded = try encoder.encode(data)
+            var items = get()
+            items.append(data)
+            
+            let encoded = try encoder.encode(items)
             UserDefaults.standard.set(encoded, forKey: cacheKey)
             return true
         } catch {
@@ -46,13 +51,15 @@ class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
     }
     
     func remove(feedItem: FeedItem) -> Bool {
-        let foundItem = get().first { $0.id == feedItem.id }
+        let items = get().filter { $0.id != feedItem.id }
         
-        if let _ = foundItem {
-            let foundItem = get().filter { $0.id != feedItem.id }
-            return save(data: foundItem)
+        UserDefaults.standard.removeObject(forKey: cacheKey)
+        
+        items.forEach { item in
+            let _ = save(data: item)
         }
         
-        return false
+        return true
+        
     }
 }
