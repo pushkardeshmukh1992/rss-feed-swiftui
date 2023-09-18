@@ -38,6 +38,10 @@ enum DataUtil {
         <figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*kvUxCePPMcrCCdoSXTJYsg.jpeg" /></figure><h4>We’re now officially and totally integrated into Wired. But we won’t be gone."
         """)
     
+    static let feedItem2 = FeedItem(title: "Feed item title 1", linkString: "https://www.google.com", category: ["category1", "category2", "category1", "category2", "category1", "category2", "category1", "category2"], pubDate: Date(), creator: "", content: """
+        <figure><img alt="" src="https://cdn-images-1.medium.com/max/1024/1*kvUxCePPMcrCCdoSXTJYsg.jpeg" /></figure><h4>We’re now officially and totally integrated into Wired. But we won’t be gone."
+        """)
+    
     static let initialPublication = [DataUtil.publication1]
     static let allPublications = [DataUtil.publication1, DataUtil.publication2, DataUtil.publication3]
 }

@@ -16,7 +16,7 @@ final class BookmarkServiceTests: XCTestCase {
     }
     
     func test_savesDataOnSuccessfullSave() {
-        let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
+        let sut = getSUT()
         
         let itemToSave = DataUtil.feedItem
         let _ = sut.save(data: itemToSave)
@@ -26,8 +26,7 @@ final class BookmarkServiceTests: XCTestCase {
     }
     
     func test_shouldReturnEmptyOnInvalidEncodableData() {
-//        let key = "TestBookmark2"
-        let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
+        let sut = getSUT()
         
         let _ = sut.save(data: Double.infinity)
         let savedItems = sut.get()
@@ -36,8 +35,7 @@ final class BookmarkServiceTests: XCTestCase {
     }
     
     func test_shouldReturnEmptyOnInvalidData() {
-//        let key = "TestBookmark3"
-        let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
+        let sut = getSUT()
         
         let _ = sut.save(data: getInvalidData())
         let savedItems = sut.get()
@@ -45,8 +43,29 @@ final class BookmarkServiceTests: XCTestCase {
         XCTAssertEqual(savedItems.count, 0)
     }
     
+    func test_shouldRemoveFeedItemFromCacheOnSuccessfullRemove() {
+        let sut = getSUT()
+        
+        let _ = sut.save(data: DataUtil.feedItem)
+        let _ = sut.save(data: DataUtil.feedItem2)
+        
+        let savedItems = sut.get()
+        
+        XCTAssertEqual(savedItems, [DataUtil.feedItem, DataUtil.feedItem2])
+        
+        let _ = sut.remove(feedItem: DataUtil.feedItem)
+        
+        XCTAssertEqual(sut.get(), [DataUtil.feedItem2])
+    }
+    
+    func getSUT() -> FeedBookmarkUserDefaultsCacheService {
+        return FeedBookmarkUserDefaultsCacheService(cacheKey: key)
+    }
+    
     func getInvalidData() -> Data {
         let json = ["items": ""]
         return try! JSONSerialization.data(withJSONObject: json)
     }
+    
+    
 }
