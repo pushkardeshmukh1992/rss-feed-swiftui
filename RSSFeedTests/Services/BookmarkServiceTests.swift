@@ -19,35 +19,17 @@ final class BookmarkServiceTests: XCTestCase {
         let sut = getSUT()
         
         let itemToSave = DataUtil.feedItem
-        let _ = sut.save(data: itemToSave)
+        let _ = sut.save(feedItem: itemToSave)
         let savedItems = sut.get()
         
         XCTAssertEqual([itemToSave], savedItems)
     }
     
-    func test_shouldReturnEmptyOnInvalidEncodableData() {
-        let sut = getSUT()
-        
-        let _ = sut.save(data: Double.infinity)
-        let savedItems = sut.get()
-        
-        XCTAssertEqual(savedItems.count, 0)
-    }
-    
-    func test_shouldReturnEmptyOnInvalidData() {
-        let sut = getSUT()
-        
-        let _ = sut.save(data: getInvalidData())
-        let savedItems = sut.get()
-        
-        XCTAssertEqual(savedItems.count, 0)
-    }
-    
     func test_shouldRemoveFeedItemFromCacheOnSuccessfullRemove() {
         let sut = getSUT()
         
-        let _ = sut.save(data: DataUtil.feedItem)
-        let _ = sut.save(data: DataUtil.feedItem2)
+        let _ = sut.save(feedItem: DataUtil.feedItem)
+        let _ = sut.save(feedItem: DataUtil.feedItem2)
         
         let savedItems = sut.get()
         
@@ -66,6 +48,5 @@ final class BookmarkServiceTests: XCTestCase {
         let json = ["items": ""]
         return try! JSONSerialization.data(withJSONObject: json)
     }
-    
     
 }

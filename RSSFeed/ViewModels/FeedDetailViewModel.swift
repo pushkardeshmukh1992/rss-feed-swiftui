@@ -22,7 +22,7 @@ class FeedDetailsViewModel: ObservableObject {
     }
     
     func saveBookmark() {
-        if bookmarkService.save(data: item) {
+        if bookmarkService.save(feedItem: item) {
             isBookmarked = hasBookmarked()
         }
     }

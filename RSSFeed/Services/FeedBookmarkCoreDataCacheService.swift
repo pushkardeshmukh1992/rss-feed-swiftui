@@ -28,9 +28,7 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 
-    func save<T>(data: T) -> Bool {
-        guard let feedItem = data as? FeedItem else { return false }
-
+    func save(feedItem: FeedItem) -> Bool {
         if let bookmark: Bookmarks = NSEntityDescription.insertNewObject(forEntityName: EntityConstant.bookmarks, into: container.viewContext) as? Bookmarks {
             bookmark.title = feedItem.title
             bookmark.linkString = feedItem.linkString

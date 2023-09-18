@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FeedBookmarkServiceProtocol {
-    func save<T: Codable>(data: T) -> Bool
+    func save(feedItem: FeedItem) -> Bool
     func get() -> [FeedItem]
     func remove(feedItem: FeedItem) -> Bool
 }
@@ -20,20 +20,16 @@ class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
         self.cacheKey = cacheKey
     }
     
-    func save<T: Codable>(data: T) -> Bool {
-        guard let data = data as? FeedItem else { return false }
-        
-        let encoder = JSONEncoder()
-        
+    func save(feedItem: FeedItem) -> Bool {
         do {
             var items = get()
-            items.append(data)
+            items.append(feedItem)
             
+            let encoder = JSONEncoder()
             let encoded = try encoder.encode(items)
             UserDefaults.standard.set(encoded, forKey: cacheKey)
             return true
         } catch {
-            print(error)
             return false
         }
     }
@@ -56,7 +52,7 @@ class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
         UserDefaults.standard.removeObject(forKey: cacheKey)
         
         items.forEach { item in
-            let _ = save(data: item)
+            let _ = save(feedItem: item)
         }
         
         return true
