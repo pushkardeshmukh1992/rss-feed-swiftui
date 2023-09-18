@@ -85,18 +85,5 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
         } else {
             return false
         }
-        
-//        let bookmark: Bookmarks = Bookmarks(context: container.viewContext)
-//        bookmark.title = feedItem.title
-//        bookmark.pubDate = feedItem.pubDate
-//        bookmark.linkString = feedItem.linkString
-//        bookmark.creator = feedItem.creator
-//        bookmark.content = feedItem.content
-//        bookmark.category = feedItem.category as NSArray
-//
-//        container.viewContext.delete(bookmark)
-        
-       
-        
     }
 }
