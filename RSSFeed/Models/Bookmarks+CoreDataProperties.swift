@@ -12,7 +12,7 @@ import CoreData
 extension Bookmarks {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Bookmarks> {
-        return NSFetchRequest<Bookmarks>(entityName: "Bookmarks")
+        return NSFetchRequest<Bookmarks>(entityName: EntityConstant.bookmarks)
     }
 
     @NSManaged public var title: String

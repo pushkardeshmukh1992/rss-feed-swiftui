@@ -29,14 +29,10 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
     }
 
     func save<T>(data: T) -> Bool {
-        // 1. Note: Convert T into array of FeedItem i.e. [FeedItem]
-        // 2. Note: Convert [FeedItem] to [Bookmarks]
-        // 3. Note: Save each Bookmarks in db
-
         guard let feedItems = data as? [FeedItem] else { return false }
 
         let _ = feedItems.compactMap { feedItem in
-            if let bookmark: Bookmarks = NSEntityDescription.insertNewObject(forEntityName: "Bookmarks", into: container.viewContext) as? Bookmarks {
+            if let bookmark: Bookmarks = NSEntityDescription.insertNewObject(forEntityName: EntityConstant.bookmarks, into: container.viewContext) as? Bookmarks {
                 bookmark.title = feedItem.title
                 bookmark.linkString = feedItem.linkString
                 bookmark.pubDate = feedItem.pubDate
