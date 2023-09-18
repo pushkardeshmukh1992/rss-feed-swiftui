@@ -46,7 +46,13 @@ class FeedBookmarkService: FeedBookmarkServiceProtocol {
     }
     
     func remove(feedItem: FeedItem) -> Bool {
-        // TODO: Add implementation later
+        let foundItem = get().first { $0.id == feedItem.id }
+        
+        if let _ = foundItem {
+            let foundItem = get().filter { $0.id != feedItem.id }
+            return save(data: foundItem)
+        }
+        
         return false
     }
 }
