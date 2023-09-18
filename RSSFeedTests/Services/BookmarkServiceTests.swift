@@ -15,7 +15,7 @@ final class BookmarkServiceTests: XCTestCase {
         UserDefaults.standard.removeObject(forKey: key)
     }
     
-    func test_savesDataOnSuccessfullSave() {
+    func test_savesDataOnSuccessfullSaveOperation() {
         let sut = getSUT()
         
         let itemToSave = DataUtil.feedItem
@@ -24,8 +24,17 @@ final class BookmarkServiceTests: XCTestCase {
         
         XCTAssertEqual([itemToSave], savedItems)
     }
+//
+    func test_rejectsDataOnUnsuccessfullSaveOperation() {
+        let sut = getSUT()
+
+        let _ = sut.encodeAndSave(Double.infinity)
+        let savedItems = sut.get()
+
+        XCTAssertEqual(savedItems.count, 0)
+    }
     
-    func test_shouldRemoveFeedItemFromCacheOnSuccessfullRemove() {
+    func test_removesFeedItemOnSuccessfullRemoveOperation() {
         let sut = getSUT()
         
         let _ = sut.save(feedItem: DataUtil.feedItem)
@@ -40,14 +49,13 @@ final class BookmarkServiceTests: XCTestCase {
         XCTAssertEqual(sut.get(), [DataUtil.feedItem2])
     }
     
-    func test_feedCacheGetMethodShouldReturnBlankIfInvalidDataInStoredInCache() {
+    func test_rejectsInvalidDataOnSaveOperation() {
         UserDefaults.standard.setValue(getInvalidData(), forKey: key)
         let sut = getSUT()
         
         let savedItems = sut.get()
         
         XCTAssertEqual(savedItems.count, 0)
-        
     }
     
     func getSUT() -> FeedBookmarkUserDefaultsCacheService {

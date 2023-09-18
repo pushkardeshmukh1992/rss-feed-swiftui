@@ -21,17 +21,10 @@ class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
     }
     
     func save(feedItem: FeedItem) -> Bool {
-        do {
-            var items = get()
-            items.append(feedItem)
-            
-            let encoder = JSONEncoder()
-            let encoded = try encoder.encode(items)
-            UserDefaults.standard.set(encoded, forKey: cacheKey)
-            return true
-        } catch {
-            return false
-        }
+        var items = get()
+        items.append(feedItem)
+        
+        return encodeAndSave(items)
     }
     
     func get() -> [FeedItem] {
@@ -60,5 +53,16 @@ class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
         
         return true
         
+    }
+    
+    func encodeAndSave<T: Codable>(_ data: T) -> Bool {
+        do {
+            let encoder = JSONEncoder()
+            let encoded = try encoder.encode(data)
+            UserDefaults.standard.set(encoded, forKey: cacheKey)
+            return true
+        } catch {
+            return false
+        }
     }
 }
