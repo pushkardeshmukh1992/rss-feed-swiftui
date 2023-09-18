@@ -14,10 +14,58 @@
             filePath = "RSSFeed/Services/FeedBookmarkUserDefaultsCacheService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
             landmarkName = "remove(feedItem:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C324C4A4-C10F-4E3A-AC11-5BC760F2FDE5"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSSFeedTests/Services/BookmarkServiceTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "test_feedCacheGetMethodShouldReturnBlankIfInvalidDataInStoredInCache()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "C324C4A4-C10F-4E3A-AC11-5BC760F2FDE5 - 6c0e53bc997887f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSSFeedTests.BookmarkServiceTests.test_feedCacheGetMethodShouldReturnBlankIfInvalidDataInStoredInCache() -&gt; ()"
+                  moduleName = "RSSFeedTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/iOS_Projects/RSSFeed/RSSFeedTests/Services/BookmarkServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "68">
+               </Location>
+               <Location
+                  uuid = "C324C4A4-C10F-4E3A-AC11-5BC760F2FDE5 - 6c0e53bc997887f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSSFeedTests.BookmarkServiceTests.test_feedCacheGetMethodShouldReturnBlankIfInvalidDataInStoredInCache() -&gt; ()"
+                  moduleName = "RSSFeedTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/iOS_Projects/RSSFeed/RSSFeedTests/Services/BookmarkServiceTests.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "152">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

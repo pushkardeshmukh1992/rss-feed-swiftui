@@ -40,6 +40,16 @@ final class BookmarkServiceTests: XCTestCase {
         XCTAssertEqual(sut.get(), [DataUtil.feedItem2])
     }
     
+    func test_feedCacheGetMethodShouldReturnBlankIfInvalidDataInStoredInCache() {
+        UserDefaults.standard.setValue(getInvalidData(), forKey: key)
+        let sut = getSUT()
+        
+        let savedItems = sut.get()
+        
+        XCTAssertEqual(savedItems.count, 0)
+        
+    }
+    
     func getSUT() -> FeedBookmarkUserDefaultsCacheService {
         return FeedBookmarkUserDefaultsCacheService(cacheKey: key)
     }

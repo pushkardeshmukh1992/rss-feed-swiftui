@@ -38,8 +38,11 @@ class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
         if let data = UserDefaults.standard.object(forKey: cacheKey) as? Data {
             let decoder = JSONDecoder()
             
-            if let object = try? decoder.decode([FeedItem].self, from: data) {
+            do {
+                let object = try decoder.decode([FeedItem].self, from: data)
                 return object
+            } catch {
+                return []
             }
         }
         
