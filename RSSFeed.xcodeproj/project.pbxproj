@@ -46,6 +46,7 @@
 		849F707E2AB83044004C03FC /* Bookmarks+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F707C2AB83044004C03FC /* Bookmarks+CoreDataClass.swift */; };
 		849F707F2AB83044004C03FC /* Bookmarks+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F707D2AB83044004C03FC /* Bookmarks+CoreDataProperties.swift */; };
 		849F70812AB839CB004C03FC /* FeedBookmarkCoreDataCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F70802AB839CB004C03FC /* FeedBookmarkCoreDataCacheService.swift */; };
+		849F70832AB84578004C03FC /* CategoryTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F70822AB84578004C03FC /* CategoryTransformer.swift */; };
 		9676839377694AF741CBE0C2 /* Pods_RSSFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFDD3F6ED58A18C2AAA66F8C /* Pods_RSSFeed.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,6 +105,7 @@
 		849F707C2AB83044004C03FC /* Bookmarks+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookmarks+CoreDataClass.swift"; sourceTree = "<group>"; };
 		849F707D2AB83044004C03FC /* Bookmarks+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bookmarks+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		849F70802AB839CB004C03FC /* FeedBookmarkCoreDataCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBookmarkCoreDataCacheService.swift; sourceTree = "<group>"; };
+		849F70822AB84578004C03FC /* CategoryTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTransformer.swift; sourceTree = "<group>"; };
 		CDCA70D9B3D88A327DA64D7D /* Pods-RSSFeedTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeedTests.release.xcconfig"; path = "Target Support Files/Pods-RSSFeedTests/Pods-RSSFeedTests.release.xcconfig"; sourceTree = "<group>"; };
 		D1845818F0CBB8FADA5F0776 /* Pods-RSSFeed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSSFeed.release.xcconfig"; path = "Target Support Files/Pods-RSSFeed/Pods-RSSFeed.release.xcconfig"; sourceTree = "<group>"; };
 		EFDD3F6ED58A18C2AAA66F8C /* Pods_RSSFeed.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSSFeed.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -288,6 +290,7 @@
 				844990992AB458BE00517D86 /* ColorUtil.swift */,
 				8449909B2AB46A5100517D86 /* DateUtil.swift */,
 				844990A42AB5AD3100517D86 /* XMLDecoderUtil.swift */,
+				849F70822AB84578004C03FC /* CategoryTransformer.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8437BDAD2AB321C0009E13AC /* FeedListView.swift in Sources */,
+				849F70832AB84578004C03FC /* CategoryTransformer.swift in Sources */,
 				849F706A2AB761AA004C03FC /* CacheConstants.swift in Sources */,
 				8484F46E2AB3712E00F7BF91 /* DataUtil.swift in Sources */,
 				849F706F2AB82EE3004C03FC /* RSSFeedCoreData.xcdatamodeld in Sources */,

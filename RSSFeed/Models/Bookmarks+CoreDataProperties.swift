@@ -15,7 +15,12 @@ extension Bookmarks {
         return NSFetchRequest<Bookmarks>(entityName: "Bookmarks")
     }
 
-    @NSManaged public var title: String?
+    @NSManaged public var title: String
+    @NSManaged public var pubDate: Date
+    @NSManaged public var linkString: String
+    @NSManaged public var creator: String
+    @NSManaged public var content: String
+    @NSManaged public var category: NSArray
 
 }
 

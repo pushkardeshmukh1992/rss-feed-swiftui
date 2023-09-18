@@ -13,6 +13,7 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
     let container: NSPersistentContainer
 
     init(inMemory: Bool = false) {
+        ValueTransformer.setValueTransformer(CategoryTransformer(), forName: NSValueTransformerName("CategoryTransformer"))
         container = NSPersistentContainer(name: "RSSFeedCoreData")
         
         if inMemory {
@@ -37,8 +38,12 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
         let _ = feedItems.compactMap { feedItem in
             if let bookmark: Bookmarks = NSEntityDescription.insertNewObject(forEntityName: "Bookmarks", into: container.viewContext) as? Bookmarks {
                 bookmark.title = feedItem.title
-//                bookmark.linkString
-//                FeedItem(title: <#T##String#>, linkString: <#T##String#>, category: <#T##[String]#>, pubDate: <#T##Date#>, creator: <#T##String#>, content: <#T##String#>)
+                bookmark.linkString = feedItem.linkString
+                bookmark.pubDate = feedItem.pubDate
+                bookmark.creator = feedItem.creator
+                bookmark.content = feedItem.content
+                bookmark.category = feedItem.category as NSArray
+                
                 return bookmark
             }
             return nil
@@ -60,7 +65,7 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
             let bookmarks = try container.viewContext.fetch(fetchRequest)
 
             let feedItems = bookmarks.map { bookmark in
-                FeedItem(title: bookmark.title ?? "", linkString: "", category: [], pubDate: Date(), creator: "Pushkar Deshmukh", content: "Hi")
+                FeedItem(title: bookmark.title, linkString: bookmark.linkString, category: (bookmark.category as? [String]) ?? [], pubDate: bookmark.pubDate, creator: bookmark.creator, content: bookmark.content)
             }
 
             return feedItems
