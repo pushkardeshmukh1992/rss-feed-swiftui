@@ -8,7 +8,7 @@
 import Foundation
 
 protocol FeedBookmarkServiceProtocol {
-    func save<T: Codable>(data: T)
+    func save<T: Codable>(data: T) -> Bool
     func get() -> [FeedItem]
 }
 
@@ -19,14 +19,16 @@ class FeedBookmarkService: FeedBookmarkServiceProtocol {
         self.cacheKey = cacheKey
     }
     
-    func save<T: Codable>(data: T) {
+    func save<T: Codable>(data: T) -> Bool {
         let encoder = JSONEncoder()
         
         do {
             let encoded = try encoder.encode(data)
             UserDefaults.standard.set(encoded, forKey: cacheKey)
+            return true
         } catch {
             print(error)
+            return false
         }
     }
     

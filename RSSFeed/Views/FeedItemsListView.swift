@@ -11,7 +11,9 @@ struct FeedItemsListView: View {
     
     @State var items = [FeedItem]()
     
-    let service = FeedBookmarkService(cacheKey: CacheConstants.bookmarkCacheKey)
+//    let service = FeedBookmarkService(cacheKey: CacheConstants.bookmarkCacheKey)
+    
+    let service = FeedBookmarkCoreDataCacheService()
     
     var body: some View {
         NavigationView {
@@ -24,7 +26,7 @@ struct FeedItemsListView: View {
                 } else {
                     ForEach(items) { item in
                         NavigationLink {
-                            FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: item))
+                            FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: item, feedBookmarkService: service))
                                 
                         } label: {
                             FeedListRowView(item: item)

@@ -35,7 +35,7 @@ struct FeedDetailsView: View {
 
 struct FeedDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: DataUtil.feedItem))
+        FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: FeedBookmarkService(cacheKey: CacheConstants.bookmarkCacheKey)))
     }
 }
 

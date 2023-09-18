@@ -43,8 +43,11 @@ struct FeedListView: View {
                         
                         ForEach(feedViewModel.feed?.channel.items ?? []) { item in
                             
+//                            let service = FeedBookmarkService(cacheKey: CacheConstants.bookmarkCacheKey)
+                            let service = FeedBookmarkCoreDataCacheService()
+                            
                             NavigationLink {
-                                FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: item))
+                                FeedDetailsView(feedDetailsViewModel: FeedDetailsViewModel(item: item, feedBookmarkService: service))
                                     
                             } label: {
                                 FeedListRowView(item: item)

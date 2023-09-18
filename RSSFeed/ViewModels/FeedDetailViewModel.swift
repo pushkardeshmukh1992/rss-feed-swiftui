@@ -14,7 +14,7 @@ class FeedDetailsViewModel: ObservableObject {
     
     let item: FeedItem
     
-    init(item: FeedItem, feedBookmarkService: FeedBookmarkServiceProtocol = FeedBookmarkService(cacheKey: CacheConstants.bookmarkCacheKey)) {
+    init(item: FeedItem, feedBookmarkService: FeedBookmarkServiceProtocol) {
         self.item = item
         self.feedBookmarkService = feedBookmarkService
         
@@ -25,15 +25,17 @@ class FeedDetailsViewModel: ObservableObject {
         var bookmarks = feedBookmarkService.get()
         bookmarks.append(item)
 
-        feedBookmarkService.save(data: bookmarks)
-        isBookmarked = hasBookmarked()
+        if feedBookmarkService.save(data: bookmarks) {
+            isBookmarked = hasBookmarked()
+        }
     }
     
     func removeBookmark() {
         let bookmarks = feedBookmarkService.get().filter { $0.id != item.id }
         
-        feedBookmarkService.save(data: bookmarks)
-        isBookmarked = hasBookmarked()
+        if feedBookmarkService.save(data: bookmarks) {
+            isBookmarked = hasBookmarked()
+        }
     }
     
     func handleBookmark() {
