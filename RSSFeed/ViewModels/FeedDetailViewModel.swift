@@ -33,7 +33,7 @@ class FeedDetailsViewModel: ObservableObject {
     func removeBookmark() {
         let bookmarks = feedBookmarkService.get().filter { $0.id != item.id }
         
-        if feedBookmarkService.save(data: bookmarks) {
+        if feedBookmarkService.remove(feedItem: item) {
             isBookmarked = hasBookmarked()
         }
     }

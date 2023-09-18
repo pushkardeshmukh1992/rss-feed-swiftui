@@ -10,6 +10,7 @@ import Foundation
 protocol FeedBookmarkServiceProtocol {
     func save<T: Codable>(data: T) -> Bool
     func get() -> [FeedItem]
+    func remove(feedItem: FeedItem) -> Bool
 }
 
 class FeedBookmarkService: FeedBookmarkServiceProtocol {
@@ -42,5 +43,10 @@ class FeedBookmarkService: FeedBookmarkServiceProtocol {
         }
         
         return []
+    }
+    
+    func remove(feedItem: FeedItem) -> Bool {
+        // TODO: Add implementation later
+        return false
     }
 }

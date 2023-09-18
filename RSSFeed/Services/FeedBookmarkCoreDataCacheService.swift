@@ -29,9 +29,9 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
     }
 
     func save<T>(data: T) -> Bool {
-        // 1. TODO: Convert T into array of FeedItem i.e. [FeedItem]
-        // 2. TODO: Convert [FeedItem] to [Bookmarks]
-        // 3. TODO: Save each Bookmarks in db
+        // 1. Note: Convert T into array of FeedItem i.e. [FeedItem]
+        // 2. Note: Convert [FeedItem] to [Bookmarks]
+        // 3. Note: Save each Bookmarks in db
 
         guard let feedItems = data as? [FeedItem] else { return false }
 
@@ -74,5 +74,38 @@ class FeedBookmarkCoreDataCacheService: FeedBookmarkServiceProtocol {
         }
 
         return []
+    }
+    
+    func remove(feedItem: FeedItem) -> Bool {
+        let fetchRequest = Bookmarks.fetchRequest()
+        fetchRequest.predicate = NSPredicate.init(format: "title == %@", feedItem.title)
+        
+        let results = try? container.viewContext.fetch(fetchRequest)
+        
+        if let results = results, let match = results.first {
+            container.viewContext.delete(match)
+            
+            do {
+                try container.viewContext.save()
+                return true
+            } catch {
+                return false
+            }
+        } else {
+            return false
+        }
+        
+//        let bookmark: Bookmarks = Bookmarks(context: container.viewContext)
+//        bookmark.title = feedItem.title
+//        bookmark.pubDate = feedItem.pubDate
+//        bookmark.linkString = feedItem.linkString
+//        bookmark.creator = feedItem.creator
+//        bookmark.content = feedItem.content
+//        bookmark.category = feedItem.category as NSArray
+//
+//        container.viewContext.delete(bookmark)
+        
+       
+        
     }
 }
