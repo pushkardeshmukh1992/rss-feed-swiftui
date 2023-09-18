@@ -15,7 +15,7 @@ final class BookmarkServiceTests: XCTestCase {
         let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
         let itemsToSave = [DataUtil.feedItem]
-        sut.save(data: itemsToSave)
+        let _ = sut.save(data: itemsToSave)
         let savedItems = sut.get()
         
         XCTAssertEqual(itemsToSave, savedItems)
@@ -25,7 +25,7 @@ final class BookmarkServiceTests: XCTestCase {
 //        let key = "TestBookmark2"
         let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
-        sut.save(data: Double.infinity)
+        let _ = sut.save(data: Double.infinity)
         let savedItems = sut.get()
         
         XCTAssertEqual(savedItems.count, 0)
@@ -35,7 +35,7 @@ final class BookmarkServiceTests: XCTestCase {
 //        let key = "TestBookmark3"
         let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
-        sut.save(data: getInvalidData())
+        let _ = sut.save(data: getInvalidData())
         let savedItems = sut.get()
         
         XCTAssertEqual(savedItems.count, 0)
