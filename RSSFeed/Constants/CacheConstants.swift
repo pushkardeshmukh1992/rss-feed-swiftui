@@ -9,4 +9,8 @@ import Foundation
 
 enum CacheConstants {
     static let bookmarkCacheKey = "FeedItemBookMarks"
+    
+    static let activeCache: CacheTypes = .coreData
 }
+
+

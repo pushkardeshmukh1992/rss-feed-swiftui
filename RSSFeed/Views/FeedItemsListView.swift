@@ -10,10 +10,8 @@ import SwiftUI
 struct FeedItemsListView: View {
     
     @State var items = [FeedItem]()
-    
-//    let service = FeedBookmarkUserDefaultsCacheService(cacheKey: CacheConstants.bookmarkCacheKey)
-    
-    let service = FeedBookmarkCoreDataCacheService()
+        
+    let service = BookmarkCacheService.getActiveService()
     
     var body: some View {
         NavigationView {

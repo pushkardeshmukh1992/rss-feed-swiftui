@@ -13,6 +13,21 @@ protocol FeedBookmarkServiceProtocol {
     func remove(feedItem: FeedItem) -> Bool
 }
 
+class BookmarkCacheService {    
+    static func getActiveService() -> FeedBookmarkServiceProtocol {
+        if CacheConstants.activeCache == .coreData {
+            return FeedBookmarkCoreDataCacheService()
+        } else {
+            return FeedBookmarkUserDefaultsCacheService(cacheKey: CacheConstants.bookmarkCacheKey)
+        }
+    }
+}
+
+enum CacheTypes {
+    case userDefaults
+    case coreData
+}
+
 class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
     let cacheKey: String
     
