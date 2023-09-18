@@ -12,7 +12,7 @@ final class BookmarkServiceTests: XCTestCase {
     let key = "TestBookMark"
     
     func test_savesDataOnSuccessfullSave() {
-        let sut = FeedBookmarkService(cacheKey: key)
+        let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
         let itemsToSave = [DataUtil.feedItem]
         sut.save(data: itemsToSave)
@@ -23,7 +23,7 @@ final class BookmarkServiceTests: XCTestCase {
     
     func test_shouldReturnEmptyOnInvalidEncodableData() {
 //        let key = "TestBookmark2"
-        let sut = FeedBookmarkService(cacheKey: key)
+        let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
         sut.save(data: Double.infinity)
         let savedItems = sut.get()
@@ -33,7 +33,7 @@ final class BookmarkServiceTests: XCTestCase {
     
     func test_shouldReturnEmptyOnInvalidData() {
 //        let key = "TestBookmark3"
-        let sut = FeedBookmarkService(cacheKey: key)
+        let sut = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
         sut.save(data: getInvalidData())
         let savedItems = sut.get()

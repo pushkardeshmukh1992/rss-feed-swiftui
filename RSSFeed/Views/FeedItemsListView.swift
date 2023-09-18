@@ -11,7 +11,7 @@ struct FeedItemsListView: View {
     
     @State var items = [FeedItem]()
     
-    let service = FeedBookmarkService(cacheKey: CacheConstants.bookmarkCacheKey)
+    let service = FeedBookmarkUserDefaultsCacheService(cacheKey: CacheConstants.bookmarkCacheKey)
     
 //    let service = FeedBookmarkCoreDataCacheService()
     

@@ -16,7 +16,7 @@ final class FeedDatailViewModelTests: XCTestCase {
     }
     
     func test_initiBookmarkShouldBeDisabled() {
-        let bookmarkService = FeedBookmarkService(cacheKey: key)
+        let bookmarkService = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
         let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: bookmarkService)
         
@@ -24,7 +24,7 @@ final class FeedDatailViewModelTests: XCTestCase {
     }
     
     func test_saveBookmarkShouldAddBookmark() {
-        let bookmarkService = FeedBookmarkService(cacheKey: key)
+        let bookmarkService = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
         let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: bookmarkService)
         
@@ -34,7 +34,7 @@ final class FeedDatailViewModelTests: XCTestCase {
     }
     
     func test_removeBookmarkShouldRemoveBookmark() {
-        let bookmarkService = FeedBookmarkService(cacheKey: key)
+        let bookmarkService = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
         let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: bookmarkService)
         
@@ -44,7 +44,7 @@ final class FeedDatailViewModelTests: XCTestCase {
     }
     
     func test_handleBookmarkActionShouldAddOrRemoveBookmark() {
-        let bookmarkService = FeedBookmarkService(cacheKey: key)
+        let bookmarkService = FeedBookmarkUserDefaultsCacheService(cacheKey: key)
         
         let sut = FeedDetailsViewModel(item: DataUtil.feedItem, feedBookmarkService: bookmarkService)
         

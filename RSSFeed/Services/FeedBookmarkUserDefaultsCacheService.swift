@@ -1,5 +1,5 @@
 //
-//  FeedBookmarkService.swift
+//  FeedBookmarkUserDefaultsCacheService.swift
 //  RSSFeed
 //
 //  Created by Admin on 17/09/23.
@@ -13,7 +13,7 @@ protocol FeedBookmarkServiceProtocol {
     func remove(feedItem: FeedItem) -> Bool
 }
 
-class FeedBookmarkService: FeedBookmarkServiceProtocol {
+class FeedBookmarkUserDefaultsCacheService: FeedBookmarkServiceProtocol {
     let cacheKey: String
     
     init(cacheKey: String) {
